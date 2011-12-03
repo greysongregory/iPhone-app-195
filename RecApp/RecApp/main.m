@@ -1,9 +1,9 @@
 //
 //  main.m
-//  recApp
+//  RecApp
 //
-//  Created by Gregory Greyson on 12/1/11.
-//  Copyright (c) 2011 University of Pennsylvania. All rights reserved.
+//  Created by Vin on 12/3/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

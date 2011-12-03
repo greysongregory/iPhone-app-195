@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'recApp' target in the 'recApp' project
+// Prefix header for all source files of the 'RecApp' target in the 'RecApp' project
 //
 
 #import <Availability.h>

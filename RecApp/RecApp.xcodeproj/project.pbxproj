@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20FB2A85148AEA6B002AFE4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2A84148AEA6B002AFE4E /* UIKit.framework */; };
+		20FB2A87148AEA6B002AFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2A86148AEA6B002AFE4E /* Foundation.framework */; };
+		20FB2A89148AEA6B002AFE4E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2A88148AEA6B002AFE4E /* CoreGraphics.framework */; };
+		20FB2A8F148AEA6B002AFE4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2A8D148AEA6B002AFE4E /* InfoPlist.strings */; };
+		20FB2A91148AEA6B002AFE4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FB2A90148AEA6B002AFE4E /* main.m */; };
+		20FB2A95148AEA6B002AFE4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FB2A94148AEA6B002AFE4E /* AppDelegate.m */; };
+		20FB2A98148AEA6B002AFE4E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2A96148AEA6B002AFE4E /* MainStoryboard.storyboard */; };
+		20FB2A9B148AEA6B002AFE4E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FB2A9A148AEA6B002AFE4E /* FirstViewController.m */; };
+		20FB2A9D148AEA6B002AFE4E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2A9C148AEA6B002AFE4E /* first.png */; };
+		20FB2A9F148AEA6B002AFE4E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2A9E148AEA6B002AFE4E /* first@2x.png */; };
+		20FB2AA2148AEA6B002AFE4E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FB2AA1148AEA6B002AFE4E /* SecondViewController.m */; };
+		20FB2AA4148AEA6B002AFE4E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2AA3148AEA6B002AFE4E /* second.png */; };
+		20FB2AA6148AEA6B002AFE4E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2AA5148AEA6B002AFE4E /* second@2x.png */; };
+		20FB2AAE148AEA6B002AFE4E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2AAD148AEA6B002AFE4E /* SenTestingKit.framework */; };
+		20FB2AAF148AEA6B002AFE4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2A84148AEA6B002AFE4E /* UIKit.framework */; };
+		20FB2AB0148AEA6B002AFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FB2A86148AEA6B002AFE4E /* Foundation.framework */; };
+		20FB2AB8148AEA6B002AFE4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20FB2AB6148AEA6B002AFE4E /* InfoPlist.strings */; };
+		20FB2ABB148AEA6B002AFE4E /* RecAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FB2ABA148AEA6B002AFE4E /* RecAppTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FB2AB1148AEA6B002AFE4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20FB2A77148AEA6B002AFE4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20FB2A7F148AEA6B002AFE4E;
+			remoteInfo = RecApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20FB2A80148AEA6B002AFE4E /* RecApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FB2A84148AEA6B002AFE4E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		20FB2A86148AEA6B002AFE4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		20FB2A88148AEA6B002AFE4E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		20FB2A8C148AEA6B002AFE4E /* RecApp-Info.plist */ = {isa = PBXFileReference; path = "RecApp-Info.plist"; sourceTree = "<group>"; };
+		20FB2A8E148AEA6B002AFE4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20FB2A90148AEA6B002AFE4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20FB2A92148AEA6B002AFE4E /* RecApp-Prefix.pch */ = {isa = PBXFileReference; path = "RecApp-Prefix.pch"; sourceTree = "<group>"; };
+		20FB2A93148AEA6B002AFE4E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		20FB2A94148AEA6B002AFE4E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		20FB2A97148AEA6B002AFE4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		20FB2A99148AEA6B002AFE4E /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		20FB2A9A148AEA6B002AFE4E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		20FB2A9C148AEA6B002AFE4E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		20FB2A9E148AEA6B002AFE4E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		20FB2AA0148AEA6B002AFE4E /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		20FB2AA1148AEA6B002AFE4E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		20FB2AA3148AEA6B002AFE4E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		20FB2AA5148AEA6B002AFE4E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		20FB2AAC148AEA6B002AFE4E /* RecAppTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecAppTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FB2AAD148AEA6B002AFE4E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		20FB2AB5148AEA6B002AFE4E /* RecAppTests-Info.plist */ = {isa = PBXFileReference; path = "RecAppTests-Info.plist"; sourceTree = "<group>"; };
+		20FB2AB7148AEA6B002AFE4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20FB2AB9148AEA6B002AFE4E /* RecAppTests.h */ = {isa = PBXFileReference; path = RecAppTests.h; sourceTree = "<group>"; };
+		20FB2ABA148AEA6B002AFE4E /* RecAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecAppTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20FB2A7D148AEA6B002AFE4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2A85148AEA6B002AFE4E /* UIKit.framework in Frameworks */,
+				20FB2A87148AEA6B002AFE4E /* Foundation.framework in Frameworks */,
+				20FB2A89148AEA6B002AFE4E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FB2AA8148AEA6B002AFE4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2AAE148AEA6B002AFE4E /* SenTestingKit.framework in Frameworks */,
+				20FB2AAF148AEA6B002AFE4E /* UIKit.framework in Frameworks */,
+				20FB2AB0148AEA6B002AFE4E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20FB2A75148AEA6B002AFE4E = {
+			isa = PBXGroup;
+			children = (
+				20FB2A8A148AEA6B002AFE4E /* RecApp */,
+				20FB2AB3148AEA6B002AFE4E /* RecAppTests */,
+				20FB2A83148AEA6B002AFE4E /* Frameworks */,
+				20FB2A81148AEA6B002AFE4E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20FB2A81148AEA6B002AFE4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2A80148AEA6B002AFE4E /* RecApp.app */,
+				20FB2AAC148AEA6B002AFE4E /* RecAppTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20FB2A83148AEA6B002AFE4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2A84148AEA6B002AFE4E /* UIKit.framework */,
+				20FB2A86148AEA6B002AFE4E /* Foundation.framework */,
+				20FB2A88148AEA6B002AFE4E /* CoreGraphics.framework */,
+				20FB2AAD148AEA6B002AFE4E /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20FB2A8A148AEA6B002AFE4E /* RecApp */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2A93148AEA6B002AFE4E /* AppDelegate.h */,
+				20FB2A94148AEA6B002AFE4E /* AppDelegate.m */,
+				20FB2A96148AEA6B002AFE4E /* MainStoryboard.storyboard */,
+				20FB2A99148AEA6B002AFE4E /* FirstViewController.h */,
+				20FB2A9A148AEA6B002AFE4E /* FirstViewController.m */,
+				20FB2A9C148AEA6B002AFE4E /* first.png */,
+				20FB2A9E148AEA6B002AFE4E /* first@2x.png */,
+				20FB2AA0148AEA6B002AFE4E /* SecondViewController.h */,
+				20FB2AA1148AEA6B002AFE4E /* SecondViewController.m */,
+				20FB2AA3148AEA6B002AFE4E /* second.png */,
+				20FB2AA5148AEA6B002AFE4E /* second@2x.png */,
+				20FB2A8B148AEA6B002AFE4E /* Supporting Files */,
+			);
+			path = RecApp;
+			sourceTree = "<group>";
+		};
+		20FB2A8B148AEA6B002AFE4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2A8C148AEA6B002AFE4E /* RecApp-Info.plist */,
+				20FB2A8D148AEA6B002AFE4E /* InfoPlist.strings */,
+				20FB2A90148AEA6B002AFE4E /* main.m */,
+				20FB2A92148AEA6B002AFE4E /* RecApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20FB2AB3148AEA6B002AFE4E /* RecAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2AB9148AEA6B002AFE4E /* RecAppTests.h */,
+				20FB2ABA148AEA6B002AFE4E /* RecAppTests.m */,
+				20FB2AB4148AEA6B002AFE4E /* Supporting Files */,
+			);
+			path = RecAppTests;
+			sourceTree = "<group>";
+		};
+		20FB2AB4148AEA6B002AFE4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20FB2AB5148AEA6B002AFE4E /* RecAppTests-Info.plist */,
+				20FB2AB6148AEA6B002AFE4E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20FB2A7F148AEA6B002AFE4E /* RecApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FB2ABE148AEA6B002AFE4E /* Build configuration list for PBXNativeTarget "RecApp" */;
+			buildPhases = (
+				20FB2A7C148AEA6B002AFE4E /* Sources */,
+				20FB2A7D148AEA6B002AFE4E /* Frameworks */,
+				20FB2A7E148AEA6B002AFE4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecApp;
+			productName = RecApp;
+			productReference = 20FB2A80148AEA6B002AFE4E /* RecApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20FB2AAB148AEA6B002AFE4E /* RecAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FB2AC1148AEA6B002AFE4E /* Build configuration list for PBXNativeTarget "RecAppTests" */;
+			buildPhases = (
+				20FB2AA7148AEA6B002AFE4E /* Sources */,
+				20FB2AA8148AEA6B002AFE4E /* Frameworks */,
+				20FB2AA9148AEA6B002AFE4E /* Resources */,
+				20FB2AAA148AEA6B002AFE4E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20FB2AB2148AEA6B002AFE4E /* PBXTargetDependency */,
+			);
+			name = RecAppTests;
+			productName = RecAppTests;
+			productReference = 20FB2AAC148AEA6B002AFE4E /* RecAppTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20FB2A77148AEA6B002AFE4E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 20FB2A7A148AEA6B002AFE4E /* Build configuration list for PBXProject "RecApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20FB2A75148AEA6B002AFE4E;
+			productRefGroup = 20FB2A81148AEA6B002AFE4E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20FB2A7F148AEA6B002AFE4E /* RecApp */,
+				20FB2AAB148AEA6B002AFE4E /* RecAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20FB2A7E148AEA6B002AFE4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2A8F148AEA6B002AFE4E /* InfoPlist.strings in Resources */,
+				20FB2A98148AEA6B002AFE4E /* MainStoryboard.storyboard in Resources */,
+				20FB2A9D148AEA6B002AFE4E /* first.png in Resources */,
+				20FB2A9F148AEA6B002AFE4E /* first@2x.png in Resources */,
+				20FB2AA4148AEA6B002AFE4E /* second.png in Resources */,
+				20FB2AA6148AEA6B002AFE4E /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FB2AA9148AEA6B002AFE4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2AB8148AEA6B002AFE4E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20FB2AAA148AEA6B002AFE4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20FB2A7C148AEA6B002AFE4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2A91148AEA6B002AFE4E /* main.m in Sources */,
+				20FB2A95148AEA6B002AFE4E /* AppDelegate.m in Sources */,
+				20FB2A9B148AEA6B002AFE4E /* FirstViewController.m in Sources */,
+				20FB2AA2148AEA6B002AFE4E /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FB2AA7148AEA6B002AFE4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FB2ABB148AEA6B002AFE4E /* RecAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20FB2AB2148AEA6B002AFE4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20FB2A7F148AEA6B002AFE4E /* RecApp */;
+			targetProxy = 20FB2AB1148AEA6B002AFE4E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20FB2A8D148AEA6B002AFE4E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FB2A8E148AEA6B002AFE4E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		20FB2A96148AEA6B002AFE4E /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FB2A97148AEA6B002AFE4E /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		20FB2AB6148AEA6B002AFE4E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FB2AB7148AEA6B002AFE4E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20FB2ABC148AEA6B002AFE4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		20FB2ABD148AEA6B002AFE4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20FB2ABF148AEA6B002AFE4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RecApp/RecApp-Prefix.pch";
+				INFOPLIST_FILE = "RecApp/RecApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		20FB2AC0148AEA6B002AFE4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RecApp/RecApp-Prefix.pch";
+				INFOPLIST_FILE = "RecApp/RecApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		20FB2AC2148AEA6B002AFE4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RecApp.app/RecApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RecApp/RecApp-Prefix.pch";
+				INFOPLIST_FILE = "RecAppTests/RecAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		20FB2AC3148AEA6B002AFE4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RecApp.app/RecApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RecApp/RecApp-Prefix.pch";
+				INFOPLIST_FILE = "RecAppTests/RecAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20FB2A7A148AEA6B002AFE4E /* Build configuration list for PBXProject "RecApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FB2ABC148AEA6B002AFE4E /* Debug */,
+				20FB2ABD148AEA6B002AFE4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FB2ABE148AEA6B002AFE4E /* Build configuration list for PBXNativeTarget "RecApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FB2ABF148AEA6B002AFE4E /* Debug */,
+				20FB2AC0148AEA6B002AFE4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		20FB2AC1148AEA6B002AFE4E /* Build configuration list for PBXNativeTarget "RecAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FB2AC2148AEA6B002AFE4E /* Debug */,
+				20FB2AC3148AEA6B002AFE4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20FB2A77148AEA6B002AFE4E /* Project object */;
+}
