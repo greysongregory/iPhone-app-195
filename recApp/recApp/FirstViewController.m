@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "CoreFunctions.h"
 
 @implementation FirstViewController
 
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad
 {
+    NSPrint(@"firstview");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }

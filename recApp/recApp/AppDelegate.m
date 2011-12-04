@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreFunctions.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSPrint(@"finishlaunch");
+    CoreFunctions *c = [[CoreFunctions alloc]init];
+    [c setup];
+    [c playAudio];
     // Override point for customization after application launch.
     return YES;
 }

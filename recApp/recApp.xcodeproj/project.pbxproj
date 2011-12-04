@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204C4754148AF7A40039CB7D /* CoreFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 204C4753148AF7A40039CB7D /* CoreFunctions.m */; };
+		204C4757148AFFC50039CB7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C4756148AFFC50039CB7D /* AVFoundation.framework */; };
+		204C475B148B15760039CB7D /* sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 204C475A148B15760039CB7D /* sound.mp3 */; };
 		38C9C14114874D7900300050 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C9C14014874D7900300050 /* UIKit.framework */; };
 		38C9C14314874D7900300050 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C9C14214874D7900300050 /* Foundation.framework */; };
 		38C9C14514874D7900300050 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C9C14414874D7900300050 /* CoreGraphics.framework */; };
@@ -38,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		204C4752148AF7A40039CB7D /* CoreFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFunctions.h; sourceTree = "<group>"; };
+		204C4753148AF7A40039CB7D /* CoreFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFunctions.m; sourceTree = "<group>"; };
+		204C4756148AFFC50039CB7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		204C475A148B15760039CB7D /* sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound.mp3; sourceTree = "<group>"; };
 		38C9C13C14874D7900300050 /* recApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C9C14014874D7900300050 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		38C9C14214874D7900300050 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204C4757148AFFC50039CB7D /* AVFoundation.framework in Frameworks */,
 				38C9C14114874D7900300050 /* UIKit.framework in Frameworks */,
 				38C9C14314874D7900300050 /* Foundation.framework in Frameworks */,
 				38C9C14514874D7900300050 /* CoreGraphics.framework in Frameworks */,
@@ -92,6 +100,7 @@
 		38C9C13114874D7900300050 = {
 			isa = PBXGroup;
 			children = (
+				204C4756148AFFC50039CB7D /* AVFoundation.framework */,
 				38C9C14614874D7900300050 /* recApp */,
 				38C9C16F14874D7900300050 /* recAppTests */,
 				38C9C13F14874D7900300050 /* Frameworks */,
@@ -124,6 +133,7 @@
 			children = (
 				38C9C14F14874D7900300050 /* AppDelegate.h */,
 				38C9C15014874D7900300050 /* AppDelegate.m */,
+				204C475A148B15760039CB7D /* sound.mp3 */,
 				38C9C15214874D7900300050 /* MainStoryboard.storyboard */,
 				38C9C15514874D7900300050 /* FirstViewController.h */,
 				38C9C15614874D7900300050 /* FirstViewController.m */,
@@ -134,6 +144,8 @@
 				38C9C15F14874D7900300050 /* second.png */,
 				38C9C16114874D7900300050 /* second@2x.png */,
 				38C9C14714874D7900300050 /* Supporting Files */,
+				204C4752148AF7A40039CB7D /* CoreFunctions.h */,
+				204C4753148AF7A40039CB7D /* CoreFunctions.m */,
 			);
 			path = recApp;
 			sourceTree = "<group>";
@@ -245,6 +257,7 @@
 				38C9C15B14874D7900300050 /* first@2x.png in Resources */,
 				38C9C16014874D7900300050 /* second.png in Resources */,
 				38C9C16214874D7900300050 /* second@2x.png in Resources */,
+				204C475B148B15760039CB7D /* sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +296,7 @@
 				38C9C15114874D7900300050 /* AppDelegate.m in Sources */,
 				38C9C15714874D7900300050 /* FirstViewController.m in Sources */,
 				38C9C15E14874D7900300050 /* SecondViewController.m in Sources */,
+				204C4754148AF7A40039CB7D /* CoreFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +466,7 @@
 				38C9C17C14874D7900300050 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38C9C17D14874D7900300050 /* Build configuration list for PBXNativeTarget "recAppTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +475,7 @@
 				38C9C17F14874D7900300050 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

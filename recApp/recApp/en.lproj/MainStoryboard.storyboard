@@ -9,6 +9,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
                 <tabBarController id="4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jtU-7e-rml"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -109,6 +110,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="T9J-19-ZJh"/>
                     <navigationItem key="navigationItem" id="yNL-Vq-zg5"/>
+                    <connections>
+                        <segue destination="4" kind="push" id="Yma-7u-00h"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1028" y="379"/>
