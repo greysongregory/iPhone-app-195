@@ -40,8 +40,8 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>location</string>
 		<string>audio</string>
+		<string>location</string>
 	</array>
 </dict>
 </plist>

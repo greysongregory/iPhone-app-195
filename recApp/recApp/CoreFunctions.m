@@ -8,6 +8,7 @@
 
 #import "CoreFunctions.h"
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation CoreFunctions
 
@@ -29,6 +30,15 @@
         
         //Load the audio into memory
         [audioPlayer prepareToPlay];
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    
+    NSError *setCategoryError = nil;
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    if (setCategoryError) { /* handle the error condition */ }
+    
+    NSError *activationError = nil;
+    [audioSession setActive:YES error:&activationError];
+    if (activationError) { /* handle the error condition */ }
      
 }
 
