@@ -28,9 +28,4 @@ GDataFeedYouTubeVideo *cuurentFeed;
 finishedWithFeed:(GDataFeedYouTubeVideo *)feed
 error:(NSError *)error;
 
-- (NSString*) getCurrentTime;
-
-- (NSString*) createApiSignature: (NSString*) string;
-- (NSString*) getQueryFromImage: (NSString*) filename;
-
 @end
