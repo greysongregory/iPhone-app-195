@@ -7,20 +7,47 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
     int takeOrChoose;
+    
+    int totalReadings;
+    int totalX;
+    int totalY;
+    int totalZ;
+    UIAccelerometer *theAccelerometer;
+    
+    int bpm;
     
     IBOutlet UIButton *takePhoto;
     IBOutlet UIButton *choosePhoto;
     IBOutlet UIButton *accelerometer;
     IBOutlet UIButton *location;
     
+    CLLocationManager *locationManager;
+    
+    NSMutableData *receivedData;
+
 }
 
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)choosePhoto:(id)sender;
 - (IBAction)useAccelerometer:(id)sender;
 - (IBAction)useLocation:(id)sender;
+
+- (void)configureAccelerometer;
+- (void)sleepAccelerometer;
+
+- (NSDictionary *)userInfo;
+
+- (NSString*) parseBPMDatabaseResult:(int)beatspm;
+
+- (NSString*) httpRequest:(NSString*)httpString;
+
+@property (nonatomic, retain) UIAccelerometer *theAccelerometer;
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
 
 @end
