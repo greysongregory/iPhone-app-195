@@ -30,7 +30,7 @@ error:(NSError *)error;
 
 - (NSString*) getCurrentTime;
 
-- (NSString*) getCurrentTime;
+- (NSString*) createApiSignature: (NSString*) string;
 - (NSString*) getQueryFromImage: (NSString*) filename;
 
 @end

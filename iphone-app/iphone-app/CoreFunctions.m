@@ -14,7 +14,7 @@
 #import "GDataEntryYouTubeUpload.h"
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
-
+#import <CommonCrypto/CommonHMAC.h>
 #import <CommonCrypto/CommonDigest.h>
 
 
@@ -23,6 +23,7 @@
 #define DEVKEY @""
 #define IMAGE_REC_URL @"http://api.iqengines.com/v1.2/query/"
 #define IMAGE_REC_API_KEY @"94288b6c52cf41ef82ec0ef7c0da00a5"
+#define IMAGE_REC_SECRET @"31a85ee648a847f798f58420c4004243"
 
 
 //contains all of the methods and functionality related to our application
@@ -65,7 +66,7 @@ void NSPrint (NSString *str)
 - (void) doSomething{
     NSPrint(@"Started");
     NSString *appFolderPath = [[NSBundle mainBundle] resourcePath];
-    [self getQueryFromImage: [ NSString stringWithFormat: @"%@/duracell1.jpg", appFolderPath]];
+    [self getQueryFromImage: [NSString stringWithFormat:@"%@/duracell1.jpg", appFolderPath ]];
 }
 
 GDataFeedYouTubeVideo *mEntriesFeed; // user feed of album entries
@@ -114,38 +115,33 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     return dateString;
 }
 
-- (NSString*) createApiSignature: (NSString*) string {
+- (NSString*) createApiSignature: (NSString *) key andData: (NSString *) data {
     
-    NSString *hashkey = string;
-    
-    const char *s = [hashkey cStringUsingEncoding:NSASCIIStringEncoding];
-    NSData *keyData = [NSData dataWithBytes:s length:strlen(s)];
-    
-    // This is the destination
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH] = {0};
-    // This one function does an unkeyed SHA1 hash of your hash data
-    CC_SHA1(keyData.bytes, keyData.length, digest);
-    
-    // Now convert to NSData structure to make it usable again
-    NSData *out = [NSData dataWithBytes:digest length:CC_SHA1_DIGEST_LENGTH];
-    // description converts to hex but puts <> around it and spaces every 4 bytes
-    NSString *hash = [out description];
+    const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
+	const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
+	
+	unsigned char cHMAC[CC_SHA1_DIGEST_LENGTH];
+	
+	CCHmac(kCCHmacAlgSHA1, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+	
+	NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+	
+    NSString *hash = [HMAC description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    // hash is now a string with just the 40char hash value in itNSString *hashkey = <your data here>;
-    
-    return hash;
+	return hash;
 }
 
 - (NSString*) getQueryFromImage: (NSString*) filename{
 
+    
     //Setup post params
  
     NSString * timeStamp = [self getCurrentTime];
     NSString * img = filename;
     NSString * api_key = IMAGE_REC_API_KEY;
-    NSString * apiSig = [self createApiSignature: [NSString stringWithFormat:@"api_key%@img%@json1time_stamp%@", api_key, @"duracell1.jpg", timeStamp] ];
+    NSString * apiSig = [self createApiSignature: IMAGE_REC_SECRET andData:[NSString stringWithFormat:@"api_key%@img%@json1time_stamp%@", api_key, @"duracell1.jpg", timeStamp] ];
 
     NSLog([NSString stringWithFormat:@"\napi_key%@img%@json1time_stamp%@", api_key, @"duracell1.jpg\n", timeStamp]);
     
@@ -159,10 +155,10 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 	 setting the quality to 90
      */
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:img];
-    
-	NSData *imageData = UIImageJPEGRepresentation(image, 90);
 	// setting up the URL to post to
 	NSString *urlString = IMAGE_REC_URL;
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0);
     
 	// setting up the request object now
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -195,6 +191,8 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 	// setting the body of the post to the reqeust
 	[request setHTTPBody:body];
     
+    NSLog(@"\n\n");
+    NSLog(body);
    
 	// now lets make the connection to the web
     NSData *responseData;
@@ -203,7 +201,10 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     NSLog(responseText);
     
     
+    return nil;
 }
+
+
 
 
 - (void) queryYoutube: (NSString*) searchString{
