@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2006F308148C517A0088ADBD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2006F307148C517A0088ADBD /* CFNetwork.framework */; };
+		2006F30A148C519E0088ADBD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2006F309148C519E0088ADBD /* MobileCoreServices.framework */; };
+		2006F30C148C51BC0088ADBD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2006F30B148C51BC0088ADBD /* libz.dylib */; };
+		2006F30E148C56110088ADBD /* duracell1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2006F30D148C56110088ADBD /* duracell1.jpg */; };
 		204C476C148B45C30039CB7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C476B148B45C30039CB7D /* UIKit.framework */; };
 		204C476E148B45C30039CB7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C476D148B45C30039CB7D /* Foundation.framework */; };
 		204C4770148B45C30039CB7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C476F148B45C30039CB7D /* CoreGraphics.framework */; };
@@ -25,6 +29,10 @@
 		204C4797148B45C40039CB7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C476D148B45C30039CB7D /* Foundation.framework */; };
 		204C479F148B45C40039CB7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 204C479D148B45C40039CB7D /* InfoPlist.strings */; };
 		204C47A2148B45C40039CB7D /* iphone_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 204C47A1148B45C40039CB7D /* iphone_appTests.m */; };
+		204C47AD148B4D020039CB7D /* CoreFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 204C47AC148B4D020039CB7D /* CoreFunctions.m */; };
+		204C47C7148B51A30039CB7D /* libGDataTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C47BD148B51530039CB7D /* libGDataTouchStaticLib.a */; };
+		204C47C9148B51B80039CB7D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C47C8148B51B80039CB7D /* Security.framework */; };
+		204C47CB148B51C30039CB7D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C47CA148B51C30039CB7D /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +43,55 @@
 			remoteGlobalIDString = 204C4766148B45C30039CB7D;
 			remoteInfo = "iphone-app";
 		};
+		204C47BA148B51530039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GDataFramework;
+		};
+		204C47BC148B51530039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1C6E0F1027B3CE00B46459;
+			remoteInfo = GDataTouchStaticLib;
+		};
+		204C47BE148B51530039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F14A9DD0B1276B70072EBB8;
+			remoteInfo = GDataUnitTests;
+		};
+		204C47C0148B51530039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F85E018103B83B700B4C418;
+			remoteInfo = GDataIPhoneUnitTests;
+		};
+		204C47C2148B51530039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = DevelopmentTestTool;
+		};
+		204C47C5148B518B0039CB7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F1C6E0E1027B3CE00B46459;
+			remoteInfo = GDataTouchStaticLib;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2006F307148C517A0088ADBD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2006F309148C519E0088ADBD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2006F30B148C51BC0088ADBD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		2006F30D148C56110088ADBD /* duracell1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duracell1.jpg; sourceTree = SOURCE_ROOT; };
 		204C4767148B45C30039CB7D /* iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		204C476B148B45C30039CB7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		204C476D148B45C30039CB7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +117,11 @@
 		204C479E148B45C40039CB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		204C47A0148B45C40039CB7D /* iphone_appTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iphone_appTests.h; sourceTree = "<group>"; };
 		204C47A1148B45C40039CB7D /* iphone_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iphone_appTests.m; sourceTree = "<group>"; };
+		204C47AB148B4D020039CB7D /* CoreFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFunctions.h; sourceTree = "<group>"; };
+		204C47AC148B4D020039CB7D /* CoreFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFunctions.m; sourceTree = "<group>"; };
+		204C47AE148B51520039CB7D /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
+		204C47C8148B51B80039CB7D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		204C47CA148B51C30039CB7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +129,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2006F30C148C51BC0088ADBD /* libz.dylib in Frameworks */,
+				204C4770148B45C30039CB7D /* CoreGraphics.framework in Frameworks */,
+				2006F30A148C519E0088ADBD /* MobileCoreServices.framework in Frameworks */,
+				204C47CB148B51C30039CB7D /* SystemConfiguration.framework in Frameworks */,
+				2006F308148C517A0088ADBD /* CFNetwork.framework in Frameworks */,
+				204C47C9148B51B80039CB7D /* Security.framework in Frameworks */,
+				204C47C7148B51A30039CB7D /* libGDataTouchStaticLib.a in Frameworks */,
 				204C476C148B45C30039CB7D /* UIKit.framework in Frameworks */,
 				204C476E148B45C30039CB7D /* Foundation.framework in Frameworks */,
-				204C4770148B45C30039CB7D /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +157,12 @@
 		204C475C148B45C20039CB7D = {
 			isa = PBXGroup;
 			children = (
+				2006F30B148C51BC0088ADBD /* libz.dylib */,
+				2006F309148C519E0088ADBD /* MobileCoreServices.framework */,
+				2006F307148C517A0088ADBD /* CFNetwork.framework */,
+				204C47CA148B51C30039CB7D /* SystemConfiguration.framework */,
+				204C47C8148B51B80039CB7D /* Security.framework */,
+				204C47AE148B51520039CB7D /* GData.xcodeproj */,
 				204C4771148B45C30039CB7D /* iphone-app */,
 				204C479A148B45C40039CB7D /* iphone-appTests */,
 				204C476A148B45C30039CB7D /* Frameworks */,
@@ -127,6 +198,7 @@
 				204C477D148B45C30039CB7D /* MainStoryboard.storyboard */,
 				204C4780148B45C30039CB7D /* FirstViewController.h */,
 				204C4781148B45C30039CB7D /* FirstViewController.m */,
+				2006F30D148C56110088ADBD /* duracell1.jpg */,
 				204C4783148B45C30039CB7D /* first.png */,
 				204C4785148B45C30039CB7D /* first@2x.png */,
 				204C4787148B45C30039CB7D /* SecondViewController.h */,
@@ -134,6 +206,8 @@
 				204C478A148B45C30039CB7D /* second.png */,
 				204C478C148B45C30039CB7D /* second@2x.png */,
 				204C4772148B45C30039CB7D /* Supporting Files */,
+				204C47AB148B4D020039CB7D /* CoreFunctions.h */,
+				204C47AC148B4D020039CB7D /* CoreFunctions.m */,
 			);
 			path = "iphone-app";
 			sourceTree = "<group>";
@@ -168,6 +242,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		204C47AF148B51520039CB7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				204C47BB148B51530039CB7D /* GData.framework */,
+				204C47BD148B51530039CB7D /* libGDataTouchStaticLib.a */,
+				204C47BF148B51530039CB7D /* GDataUnitTests.octest */,
+				204C47C1148B51530039CB7D /* GDataIPhoneUnitTests.octest */,
+				204C47C3148B51530039CB7D /* DevelopmentTestTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +268,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				204C47C6148B518B0039CB7D /* PBXTargetDependency */,
 			);
 			name = "iphone-app";
 			productName = "iphone-app";
@@ -225,6 +312,12 @@
 			mainGroup = 204C475C148B45C20039CB7D;
 			productRefGroup = 204C4768148B45C30039CB7D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 204C47AF148B51520039CB7D /* Products */;
+					ProjectRef = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				204C4766148B45C30039CB7D /* iphone-app */,
@@ -232,6 +325,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		204C47BB148B51530039CB7D /* GData.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GData.framework;
+			remoteRef = 204C47BA148B51530039CB7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C47BD148B51530039CB7D /* libGDataTouchStaticLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGDataTouchStaticLib.a;
+			remoteRef = 204C47BC148B51530039CB7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C47BF148B51530039CB7D /* GDataUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GDataUnitTests.octest;
+			remoteRef = 204C47BE148B51530039CB7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C47C1148B51530039CB7D /* GDataIPhoneUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GDataIPhoneUnitTests.octest;
+			remoteRef = 204C47C0148B51530039CB7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C47C3148B51530039CB7D /* DevelopmentTestTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DevelopmentTestTool;
+			remoteRef = 204C47C2148B51530039CB7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		204C4765148B45C30039CB7D /* Resources */ = {
@@ -244,6 +375,7 @@
 				204C4786148B45C30039CB7D /* first@2x.png in Resources */,
 				204C478B148B45C30039CB7D /* second.png in Resources */,
 				204C478D148B45C30039CB7D /* second@2x.png in Resources */,
+				2006F30E148C56110088ADBD /* duracell1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +414,7 @@
 				204C477C148B45C30039CB7D /* AppDelegate.m in Sources */,
 				204C4782148B45C30039CB7D /* FirstViewController.m in Sources */,
 				204C4789148B45C30039CB7D /* SecondViewController.m in Sources */,
+				204C47AD148B4D020039CB7D /* CoreFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +433,11 @@
 			isa = PBXTargetDependency;
 			target = 204C4766148B45C30039CB7D /* iphone-app */;
 			targetProxy = 204C4798148B45C40039CB7D /* PBXContainerItemProxy */;
+		};
+		204C47C6148B518B0039CB7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GDataTouchStaticLib;
+			targetProxy = 204C47C5148B518B0039CB7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -351,6 +489,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
@@ -369,6 +508,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -382,7 +522,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iphone-app/iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "iphone-app/iphone-app-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/Headers";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -393,7 +539,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iphone-app/iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "iphone-app/iphone-app-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/Headers";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -451,6 +603,7 @@
 				204C47A7148B45C40039CB7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		204C47A8148B45C40039CB7D /* Build configuration list for PBXNativeTarget "iphone-appTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +612,7 @@
 				204C47AA148B45C40039CB7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
