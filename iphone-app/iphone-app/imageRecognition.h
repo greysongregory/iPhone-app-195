@@ -12,14 +12,16 @@
 NSMutableData *receivedData;
 SBJsonParser *parser;
 int updatePollDelayInSeconds;
+BOOL pollInProgress;
 
 
-
-@interface imageRecognition : NSObject
+@interface ImageRecognition : NSObject
 
 - (NSString*) getCurrentTime;
 
 - (NSString*) createApiSignature: (NSString*) string;
 - (NSString*) getQueryFromImage: (NSString*) filename;
+- (NSMutableData*) paramData: (NSString*)name andValue: (NSString*)value;
 
+- (NSString *)stringValue:(id)value;
 @end

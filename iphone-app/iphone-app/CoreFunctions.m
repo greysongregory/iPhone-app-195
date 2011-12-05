@@ -14,7 +14,7 @@
 #import "GDataEntryYouTubeUpload.h"
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
-
+#import "ImageRecognition.h"
 
 
 #define CLIENT_ID @""
@@ -53,7 +53,7 @@ URL findVideoByLocation(location)
 #define LogMethod() printf("%s\n", [[NSString stringWithFormat:@"Simulator-[%@ %s]", self, _cmd] cStringUsingEncoding:NSUTF8StringEncoding]);
 #else
 #define LogMethod() NSLog(@"-[%@ %s]", self, _cmd])
-#endif
+#endif/Users/Vin/Documents/iPhone-app-195/iphone-app/iphone-app/imageRecognition.m
 
 void NSPrint (NSString *str)
 {
@@ -62,6 +62,7 @@ void NSPrint (NSString *str)
 
 - (void) doSomething{
     NSPrint(@"Started");
+    ImageRecognition *imgRec = [[ImageRecognition alloc] init];
 }
 
 GDataFeedYouTubeVideo *mEntriesFeed; // user feed of album entries

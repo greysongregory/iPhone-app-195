@@ -46,6 +46,7 @@
 		208C0C5B148CE4710050AEBB /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C0C4D148CE4710050AEBB /* SBJsonTokeniser.m */; };
 		208C0C5C148CE4710050AEBB /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C0C4F148CE4710050AEBB /* SBJsonUTF8Stream.m */; };
 		208C0C5D148CE4710050AEBB /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C0C51148CE4710050AEBB /* SBJsonWriter.m */; };
+		208C0C60148D8B020050AEBB /* IQResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C0C5F148D8B020050AEBB /* IQResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,8 @@
 		208C0C4F148CE4710050AEBB /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		208C0C50148CE4710050AEBB /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		208C0C51148CE4710050AEBB /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		208C0C5E148D8B020050AEBB /* IQResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQResult.h; sourceTree = "<group>"; };
+		208C0C5F148D8B020050AEBB /* IQResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,8 @@
 		204C4771148B45C30039CB7D /* iphone-app */ = {
 			isa = PBXGroup;
 			children = (
+				208C0C5E148D8B020050AEBB /* IQResult.h */,
+				208C0C5F148D8B020050AEBB /* IQResult.m */,
 				204C477A148B45C30039CB7D /* AppDelegate.h */,
 				204C477B148B45C30039CB7D /* AppDelegate.m */,
 				204C477D148B45C30039CB7D /* MainStoryboard.storyboard */,
@@ -503,6 +508,7 @@
 				208C0C5B148CE4710050AEBB /* SBJsonTokeniser.m in Sources */,
 				208C0C5C148CE4710050AEBB /* SBJsonUTF8Stream.m in Sources */,
 				208C0C5D148CE4710050AEBB /* SBJsonWriter.m in Sources */,
+				208C0C60148D8B020050AEBB /* IQResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

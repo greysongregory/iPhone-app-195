@@ -6,18 +6,18 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "imageRecognition.h"
+#import "ImageRecognition.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import <CommonCrypto/CommonDigest.h>
-
+#import "IQResult.h"
 
 #define IMAGE_REC_URL @"http://api.iqengines.com/v1.2/query/"
 #define IMAGE_REC_API_KEY @"94288b6c52cf41ef82ec0ef7c0da00a5"
 #define IMAGE_REC_SECRET @"31a85ee648a847f798f58420c4004243"
-
+#define IMAGE_REC_POLL_URL @"http://api.iqengines.com/v1.2/update/"
 
 const NSString *boundary = @"---------------------------14737809831466499882746641449";
-@implementation imageRecognition
+@implementation ImageRecognition
 
 
 
@@ -25,8 +25,10 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 	if (self == [super init]) {
 		parser = [[SBJsonParser alloc] init];
 		updatePollDelayInSeconds = 1;
+        pollInProgress = NO;
 	}
-    
+    NSString *img = [NSString stringWithFormat: @"%@/iphone-app/duracell1.jpg", NSHomeDirectory()];
+    [self getQueryFromImage: img];
 	return self;
 }
 
@@ -106,10 +108,10 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     
     
     
-    [body appendData: [self paramData: @"api_key", api_key]];
-    [body appendData: [self paramData: @"api_sig", apiSig]];
-    [body appendData: [self paramData: @"time_stamp", timeStamp]];
-    body appendData: [self paramData: @"json", @"1"]];
+    [body appendData: [self paramData: @"api_key" andValue: api_key]];
+    [body appendData: [self paramData: @"api_sig"andValue: apiSig]];
+    [body appendData: [self paramData: @"time_stamp" andValue: timeStamp]];
+    [body appendData: [self paramData: @"json" andValue: @"1"]];
     
 	[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=img; filename=%@\r\n", @"duracell1.jpg"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -119,15 +121,80 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 	// setting the body of the post to the reqeust
 	[request setHTTPBody:body];
     
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
 }
 
-- (NSString*) paramData: (NSString*)name (NSString*)value{
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n", name] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"\r\n%@", value] dataUsingEncoding:NSUTF8StringEncoding]];
+- (NSMutableData*) paramData: (NSString*)name andValue: (NSString*)value{
+    NSMutableData *data = [NSMutableData data];
+    [data appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n", name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:[[NSString stringWithFormat:@"\r\n%@", value] dataUsingEncoding:NSUTF8StringEncoding]];
+    return data;
 }
+
+
+
+
+
+- (void)processResults:(NSArray *)result{
+    
+	if (result == nil) {
+		return;
+	}
+    
+	for (NSDictionary *dict in result) {
+		NSString *sig = [dict objectForKey:@"qid"];
+		NSDictionary *properties = [dict objectForKey:@"qid_data"];
+		IQResult *result = [[IQResult alloc]initWithSignature:sig];
+
+        result.color = [self stringValue:[properties objectForKey:@"color"]];
+        result.isbn = [self stringValue:[properties objectForKey:@"isbn"]];
+        result.labels = [self stringValue:[properties objectForKey:@"labels"]];
+        result.sku = [self stringValue:[properties objectForKey:@"sku"]];
+        result.upc = [self stringValue:[properties objectForKey:@"upc"]];
+        result.url = [self stringValue:[properties objectForKey:@"url"]];
+            
+        pollInProgress = NO;
+	}
+    
+}
+
+- (NSString *)stringValue:(id)value{
+    
+	if(value == nil){
+		return @"";
+	}else {
+		return (NSString *)value;
+	}
+    
+}
+
+- (void)doAsyncCheckRequest
+{
+    //Setup post params
+    NSString *urlString = IMAGE_REC_POLL_URL;
+    
+    NSString * timeStamp = [self getCurrentTime];
+    NSString * api_key = IMAGE_REC_API_KEY;
+    NSString * apiSig = [self createApiSignature: IMAGE_REC_SECRET andData:[NSString stringWithFormat:@"api_key%@json1time_stamp%@", api_key, timeStamp] ];
+    
+    NSString *postParams = [[NSString alloc] initWithFormat:@"api_key=$@&api_sig=$@&json=1&time_stamp=%@", api_key, apiSig, timeStamp];
+    
+    
+    
+    // setting up the request object now
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+	[request setURL:[NSURL URLWithString:urlString]];
+	[request setHTTPMethod:@"POST"];
+    
+
+    [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
+     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSLog(@"Sending poll request");
+}
+
+/*--------------------HTTP Request callbacks----------------*/
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -146,7 +213,7 @@ const NSString *boundary = @"---------------------------147378098314664998827466
   didFailWithError:(NSError *)error
 {
     // inform the user
-    NSLog(@"Connection failed! Error - %@ %@",
+    NSLog(@"Connection failed! Error - %@ %@\n",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 }
@@ -154,29 +221,31 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // do something with the data
-    // receivedData is declared as a method instance elsewhere;
-    
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-	NSLog(@"Response %@", responseString);	
-    
-	NSDictionary *rootLevel = [parser objectWithString:responseString];
-	NSDictionary *dataLevel = [rootLevel objectForKey:@"data"];
-	NSNumber *errorNo = [dataLevel objectForKey:@"error"];
+	NSLog(@"Response %@\n", responseString);	
     
     
-	if ([errorNo intValue] != 0) {
-		NSString *message = [dataLevel objectForKey:@"comment"];
-		// at this point we will abort any image id attempts since we dont know which failed
+    if (pollInProgress){
+        
+        [self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
+        //[self processResults:[dataLevel objectForKey:@"results"]];
+    }
+    else{
+        NSDictionary *rootLevel = [parser objectWithString:responseString];
+        NSDictionary *dataLevel = [rootLevel objectForKey:@"data"];
+        NSNumber *errorNo = [dataLevel objectForKey:@"error"];
+        if ([errorNo intValue] != 0) {
+            NSString *message = [dataLevel objectForKey:@"comment"];
+            // at this point we will abort any image id attempts since we dont know which failed
             
-		return;
-	}
+            return;
+        }
+        pollInProgress = YES;
+        [self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
+    }
     
-	//[self processResults:[dataLevel objectForKey:@"results"]];
     
-    
-	if ([pendingRequests count] > 0) {
-		[self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
-	}
+	
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -186,25 +255,5 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     [receivedData appendData:data];
 }
 
-- (void)doAsyncCheckRequest
-{
-	// update
-	NSURL *url = [NSURL URLWithString:@"http://api.iqengines.com/v1.2/update/"];
-	NSString * = [self getUTCFormatedDate];
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	request.timeOutSeconds = 90;
-	NSString *joinedParams = [NSString stringWithFormat:@"api_key%@json1time_stamp%@", self.key, utcTimestampString];
-	NSString *apiSig = [self hmacSha1:joinedParams];
-	[request setPostValue:self.key forKey:@"api_key"];
-	[request setPostValue:apiSig forKey:@"api_sig"];	
-	[request setPostValue:@"1" forKey:@"json"];
-	[request setPostValue:utcTimestampString forKey:@"time_stamp"];	
-	request.delegate = self;
-	NSLog(@"Checking on image requests, %d pending", [pendingRequests count]);
-	[request startAsynchronous];
-    
-}
-
-
-
+/*--------------------------------------------------------------*/
 @end
