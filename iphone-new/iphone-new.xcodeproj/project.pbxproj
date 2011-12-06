@@ -25,7 +25,6 @@
 		20251924148D963800EC78CA /* imageRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251920148D963800EC78CA /* imageRecognition.m */; };
 		20251925148D963800EC78CA /* IQResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251922148D963800EC78CA /* IQResult.m */; };
 		2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2025193E148D980500EC78CA /* NSObject+SBJson.m */; };
-		20251973148D9A1200EC78CA /* libGDataTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */; };
 		3892145F148C05CB0047CCA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3892145E148C05CB0047CCA5 /* UIKit.framework */; };
 		38921461148C05CB0047CCA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921460148C05CB0047CCA5 /* Foundation.framework */; };
 		38921463148C05CB0047CCA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921462148C05CB0047CCA5 /* CoreGraphics.framework */; };
@@ -49,48 +48,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		20251966148D99ED00EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GDataFramework;
-		};
-		20251968148D99ED00EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F1C6E0F1027B3CE00B46459;
-			remoteInfo = GDataTouchStaticLib;
-		};
-		2025196A148D99ED00EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F14A9DD0B1276B70072EBB8;
-			remoteInfo = GDataUnitTests;
-		};
-		2025196C148D99ED00EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F85E018103B83B700B4C418;
-			remoteInfo = GDataIPhoneUnitTests;
-		};
-		2025196E148D99ED00EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
-		20251971148D9A0900EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F1C6E0E1027B3CE00B46459;
-			remoteInfo = GDataTouchStaticLib;
-		};
 		38921480148C05CB0047CCA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38921451148C05CB0047CCA5 /* Project object */;
@@ -135,7 +92,6 @@
 		20251922148D963800EC78CA /* IQResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQResult.m; sourceTree = "<group>"; };
 		2025193D148D980500EC78CA /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		2025193E148D980500EC78CA /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
-		2025195A148D99EC00EC78CA /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
 		3892145A148C05CB0047CCA5 /* iphone-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3892145E148C05CB0047CCA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		38921460148C05CB0047CCA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20251973148D9A1200EC78CA /* libGDataTouchStaticLib.a in Frameworks */,
 				202518E4148D93D000EC78CA /* SystemConfiguration.framework in Frameworks */,
 				202518E2148D93C800EC78CA /* Security.framework in Frameworks */,
 				389214E6148CB9CD0047CCA5 /* CoreLocation.framework in Frameworks */,
@@ -230,22 +185,9 @@
 			name = SBJson;
 			sourceTree = "<group>";
 		};
-		2025195B148D99EC00EC78CA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				20251967148D99ED00EC78CA /* GData.framework */,
-				20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */,
-				2025196B148D99ED00EC78CA /* GDataUnitTests.octest */,
-				2025196D148D99ED00EC78CA /* GDataIPhoneUnitTests.octest */,
-				2025196F148D99ED00EC78CA /* DevelopmentTestTool */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		3892144F148C05CB0047CCA5 = {
 			isa = PBXGroup;
 			children = (
-				2025195A148D99EC00EC78CA /* GData.xcodeproj */,
 				202518E3148D93D000EC78CA /* SystemConfiguration.framework */,
 				202518E1148D93C800EC78CA /* Security.framework */,
 				389214E5148CB9CD0047CCA5 /* CoreLocation.framework */,
@@ -351,7 +293,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				20251972148D9A0900EC78CA /* PBXTargetDependency */,
 			);
 			name = "iphone-new";
 			productName = "iphone-new";
@@ -396,12 +337,6 @@
 			mainGroup = 3892144F148C05CB0047CCA5;
 			productRefGroup = 3892145B148C05CB0047CCA5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2025195B148D99EC00EC78CA /* Products */;
-					ProjectRef = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				38921459148C05CB0047CCA5 /* iphone-new */,
@@ -409,44 +344,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		20251967148D99ED00EC78CA /* GData.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GData.framework;
-			remoteRef = 20251966148D99ED00EC78CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGDataTouchStaticLib.a;
-			remoteRef = 20251968148D99ED00EC78CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2025196B148D99ED00EC78CA /* GDataUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GDataUnitTests.octest;
-			remoteRef = 2025196A148D99ED00EC78CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2025196D148D99ED00EC78CA /* GDataIPhoneUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GDataIPhoneUnitTests.octest;
-			remoteRef = 2025196C148D99ED00EC78CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2025196F148D99ED00EC78CA /* DevelopmentTestTool */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 2025196E148D99ED00EC78CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		38921458148C05CB0047CCA5 /* Resources */ = {
@@ -526,11 +423,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		20251972148D9A0900EC78CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GDataTouchStaticLib;
-			targetProxy = 20251971148D9A0900EC78CA /* PBXContainerItemProxy */;
-		};
 		38921481148C05CB0047CCA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 38921459148C05CB0047CCA5 /* iphone-new */;

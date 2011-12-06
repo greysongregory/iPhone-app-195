@@ -7,6 +7,7 @@
 //
 
 #import "YouTubeView.h"
+#import "GData.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 

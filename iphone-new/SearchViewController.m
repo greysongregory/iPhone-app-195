@@ -8,7 +8,6 @@
 
 #import "SearchViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
-#import "GData.h"
 //#import "UIImagePickerController.h"
 #define kAccelerometerFrequency        50.0 //Hz
 #define kFilteringFactor 0.1
