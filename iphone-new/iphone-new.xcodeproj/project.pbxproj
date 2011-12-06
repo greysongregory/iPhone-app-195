@@ -30,6 +30,7 @@
 		389214DE148C98230047CCA5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389214DD148C98230047CCA5 /* CoreImage.framework */; };
 		389214E0148C983F0047CCA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389214DF148C983E0047CCA5 /* MobileCoreServices.framework */; };
 		389214E6148CB9CD0047CCA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389214E5148CB9CD0047CCA5 /* CoreLocation.framework */; };
+		389214F5148D8B770047CCA5 /* YouTubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 389214F4148D8B760047CCA5 /* YouTubeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		389214DD148C98230047CCA5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		389214DF148C983E0047CCA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		389214E5148CB9CD0047CCA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		389214F3148D8B750047CCA5 /* YouTubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeView.h; sourceTree = "<group>"; };
+		389214F4148D8B760047CCA5 /* YouTubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 			children = (
 				389214D6148C7E620047CCA5 /* SearchViewController.h */,
 				389214D7148C7E620047CCA5 /* SearchViewController.m */,
+				389214F3148D8B750047CCA5 /* YouTubeView.h */,
+				389214F4148D8B760047CCA5 /* YouTubeView.m */,
 				3892146D148C05CB0047CCA5 /* AppDelegate.h */,
 				3892146E148C05CB0047CCA5 /* AppDelegate.m */,
 				38921470148C05CB0047CCA5 /* MainStoryboard.storyboard */,
@@ -307,6 +312,7 @@
 				389214A0148C0C970047CCA5 /* SettingsViewController.m in Sources */,
 				389214B6148C3BF80047CCA5 /* HistoryItemViewController.m in Sources */,
 				389214D8148C7E620047CCA5 /* SearchViewController.m in Sources */,
+				389214F5148D8B770047CCA5 /* YouTubeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@
 #define kAccelerometerFrequency        50.0 //Hz
 #define kFilteringFactor 0.1
 
+#define youTubeMaxResults 15
+
 @implementation SearchViewController
 
 @synthesize theAccelerometer;
@@ -98,6 +100,8 @@
     NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
     
     //query youtube here with artistAndTitle as the search string
+    [queryYoutube artistAndTitle];
+    
 }
 
 - (IBAction)useLocation:(id)sender
@@ -210,6 +214,46 @@
     totalX += abs(x);
     totalY += abs(y);
     totalZ += abs(z);
+}
+
+- (void) queryYoutube: (NSString*) searchString{
+    NSPrint( (@"querying youtube with %@\n",searchString) );
+    
+    NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
+    
+    GDataQueryYouTube* query = [GDataQueryYouTube  youTubeQueryWithFeedURL:feedURL];
+    
+    [query setVideoQuery:searchString];
+    
+    [query setMaxResults:youTubeMaxResults];
+    GDataServiceTicket *request;
+    
+    request = [service fetchFeedWithQuery:query delegate:self didFinishSelector:@selector(processYoutubeResults:finishedWithFeed:error:)];
+    
+    [request setShouldFollowNextLinks:NO];
+    
+}
+
+- (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error
+{
+    if (error){
+        NSPrint([error description]);
+    }
+    NSPrint([feed debugDescription]);
+    currentFeed = feed;
+    
+    //parse result and grab a random youtube video here
+    int index = arc4random()%youTubeMaxResults //this could give us out of bounds error if number of results is less than youTubeMaxResults
+    
+    //(id)entryAtIndex:(NSUInteger)idx
+    
+    GDataEntryBase* entry = [currentFeed entryAtIndex:index]
+    GDataLink* link = [entry feedLink]
+    youTubeQueryURL = [link href];
+    
+    //display link to play video
+    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL frame:CGRectMake(100, 170, 120, 120)];
+	[[self view] addSubview:youTubeView];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
