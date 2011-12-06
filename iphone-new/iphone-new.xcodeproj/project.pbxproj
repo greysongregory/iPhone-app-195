@@ -25,6 +25,7 @@
 		20251924148D963800EC78CA /* imageRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251920148D963800EC78CA /* imageRecognition.m */; };
 		20251925148D963800EC78CA /* IQResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251922148D963800EC78CA /* IQResult.m */; };
 		2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2025193E148D980500EC78CA /* NSObject+SBJson.m */; };
+		20D68B0D148DDB4D00FA94A2 /* HistoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D68B0C148DDB4C00FA94A2 /* HistoryEntry.m */; };
 		3892145F148C05CB0047CCA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3892145E148C05CB0047CCA5 /* UIKit.framework */; };
 		38921461148C05CB0047CCA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921460148C05CB0047CCA5 /* Foundation.framework */; };
 		38921463148C05CB0047CCA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921462148C05CB0047CCA5 /* CoreGraphics.framework */; };
@@ -135,6 +136,8 @@
 		20251922148D963800EC78CA /* IQResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQResult.m; sourceTree = "<group>"; };
 		2025193D148D980500EC78CA /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		2025193E148D980500EC78CA /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		20D68B0B148DDB4C00FA94A2 /* HistoryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEntry.h; sourceTree = "<group>"; };
+		20D68B0C148DDB4C00FA94A2 /* HistoryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEntry.m; sourceTree = "<group>"; };
 		38503FA4148DB68C00B13076 /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
 		3892145A148C05CB0047CCA5 /* iphone-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3892145E148C05CB0047CCA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -303,6 +306,8 @@
 				389214B4148C3BF80047CCA5 /* HistoryItemViewController.h */,
 				389214B5148C3BF80047CCA5 /* HistoryItemViewController.m */,
 				38921465148C05CB0047CCA5 /* Supporting Files */,
+				20D68B0B148DDB4C00FA94A2 /* HistoryEntry.h */,
+				20D68B0C148DDB4C00FA94A2 /* HistoryEntry.m */,
 			);
 			path = "iphone-new";
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				20251924148D963800EC78CA /* imageRecognition.m in Sources */,
 				20251925148D963800EC78CA /* IQResult.m in Sources */,
 				2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */,
+				20D68B0D148DDB4D00FA94A2 /* HistoryEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
