@@ -20,8 +20,14 @@ BOOL pollInProgress;
 - (NSString*) getCurrentTime;
 
 - (NSString*) createApiSignature: (NSString*) string;
-- (NSString*) getQueryFromImage: (NSString*) filename;
+- (void) sendImageForRecognition: (UIImage*) filename;
 - (NSMutableData*) paramData: (NSString*)name andValue: (NSString*)value;
 
+- (UIImage *)sizedImageToSpecs:(UIImage *)image;
+
 - (NSString *)stringValue:(id)value;
+
+- (UIImage*)imageWithImage:(UIImage*)image 
+              scaledToSize:(CGSize)newSize;
+
 @end

@@ -21,6 +21,7 @@
 #define CLIENT_SECRET @""
 #define DEVKEY @""
 #define youTubeMaxResults 15
+#define LOCATION_RADIUS @"20m"
 
 
 
@@ -91,6 +92,24 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 }
 
 
++ (void) queryYoutubeWithLocation: (double)lat andLongitude:(double) lon{
+    NSLog( [NSString stringWithFormat: @"querying youtube with latitude: %f longitude: %f\n",lat, lon]);
+    
+    NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
+    
+    GDataQueryYouTube* query = [GDataQueryYouTube  youTubeQueryWithFeedURL:feedURL];
+    
+    [query setLocation:[NSString stringWithFormat:@"%f,%f", lat, lon]];
+    [query setLocationRadius:LOCATION_RADIUS];
+    
+    [query setMaxResults:youTubeMaxResults];
+    GDataServiceTicket *request;
+    
+    request = [service fetchFeedWithQuery:query delegate:self didFinishSelector:@selector(processYoutubeResults:finishedWithFeed:error:)];
+    
+    [request setShouldFollowNextLinks:NO];
+    
+}
 
 + (void) queryYoutube: (NSString*) searchString{
     youTubeView = nil;
@@ -128,6 +147,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     GDataLink* link = [entry HTMLLink];
     youTubeQueryURL = [link href];
     
+    NSLog(@"Choosing url: %@", link);
     //display link to play video
     
     youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL];

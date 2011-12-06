@@ -127,6 +127,7 @@
 
     
     //make youtube request with lat and long variables
+    [CoreFunctions queryYoutubeWithLocation: lat andLongitude: lon];
 }
 
 
@@ -138,8 +139,7 @@
     
         // Access the uncropped image from info dictionary
         UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
-        // Create paths to output images
+            // Create paths to output images
         NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
         NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
     

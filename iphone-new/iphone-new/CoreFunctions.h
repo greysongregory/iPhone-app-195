@@ -27,6 +27,8 @@ UIViewController* uiv;
 
 + (void) queryYoutube: (NSString*) query;
 
++ (void) queryYoutubeWithLocation: (double)lat andLongitude:(double) lon;
+
 + (void) processYoutubeResults: (GDataServiceTicket *)ticket
 finishedWithFeed:(GDataFeedYouTubeVideo *)feed
 error:(NSError *)error;
