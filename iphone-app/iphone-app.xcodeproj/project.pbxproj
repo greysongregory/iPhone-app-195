@@ -92,13 +92,6 @@
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
 			remoteInfo = DevelopmentTestTool;
 		};
-        204C47C5148B518B0039CB7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F1C6E0E1027B3CE00B46459;
-			remoteInfo = GDataTouchStaticLib;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */

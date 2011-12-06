@@ -20,6 +20,7 @@
 #define CLIENT_ID @""
 #define CLIENT_SECRET @""
 #define DEVKEY @""
+#define youTubeMaxResults 15
 
 
 
@@ -65,7 +66,7 @@ NSURL *mUploadLocationURL;
 static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 
-- (void) setupYoutubeService{
++ (void) setupYoutubeService{
     NSString *clientID = CLIENT_ID;
     NSString *clientSecret = CLIENT_SECRET;
     
@@ -91,7 +92,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 
 
-- (void) queryYoutube: (NSString*) searchString{
++ (void) queryYoutube: (NSString*) searchString{
     NSLog( (@"querying youtube with %@\n",searchString) );
     
     NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
@@ -100,7 +101,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     [query setVideoQuery:searchString];
     
-    [query setMaxResults:15];
+    [query setMaxResults:youTubeMaxResults];
     GDataServiceTicket *request;
     
     request = [service fetchFeedWithQuery:query delegate:self didFinishSelector:@selector(processYoutubeResults:finishedWithFeed:error:)];
@@ -109,14 +110,27 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
 }
 
-- (void) processYoutubeResults: (GDataServiceTicket *)ticket
-              finishedWithFeed:(GDataFeedYouTubeVideo *)feed
-                         error:(NSError *)error{
++ (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error
+{
     if (error){
         NSLog([error description]);
     }
     NSLog([feed debugDescription]);
-    cuurentFeed = feed;
+    currentFeed = feed;
+    
+    //parse result and grab a random youtube video here
+    int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
+    
+    //(id)entryAtIndex:(NSUInteger)idx
+    
+    GDataEntryBase* entry = [currentFeed entryAtIndex:index];
+    GDataLink* link = [entry HTMLLink];
+    youTubeQueryURL = [link href];
+    
+    //display link to play video
+    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL frame:CGRectMake(100, 170, 120, 120)];
+	[[self view] addSubview:youTubeView];
 }
+
 
 @end

@@ -7,12 +7,17 @@
 //
 
 #import "SearchViewController.h"
+#import "CoreFunctions.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 //#import "UIImagePickerController.h"
 #define kAccelerometerFrequency        50.0 //Hz
 #define kFilteringFactor 0.1
 
 #define youTubeMaxResults 15
+
+#define CLIENT_ID @""
+#define CLIENT_SECRET @""
+#define DEVKEY @""
 
 @implementation SearchViewController
 
@@ -100,7 +105,7 @@
     NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
     
     //query youtube here with artistAndTitle as the search string
-    [self queryYoutube:artistAndTitle];
+    [CoreFunctions queryYoutube:artistAndTitle];
     
 }
 
@@ -216,45 +221,7 @@
     totalZ += abs(z);
 }
 
-- (void) queryYoutube: (NSString*) searchString{
-    NSLog( (@"querying youtube with %@\n",searchString) );
-    
-    NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
-    
-    GDataQueryYouTube* query = [GDataQueryYouTube  youTubeQueryWithFeedURL:feedURL];
-    
-    [query setVideoQuery:searchString];
-    
-    [query setMaxResults:youTubeMaxResults];
-    GDataServiceTicket *request;
-    
-    request = [service fetchFeedWithQuery:query delegate:self didFinishSelector:@selector(processYoutubeResults:finishedWithFeed:error:)];
-    
-    [request setShouldFollowNextLinks:NO];
-    
-}
 
-- (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error
-{
-    if (error){
-        NSLog([error description]);
-    }
-    NSLog([feed debugDescription]);
-    currentFeed = feed;
-    
-    //parse result and grab a random youtube video here
-    int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
-    
-    //(id)entryAtIndex:(NSUInteger)idx
-    
-    GDataEntryBase* entry = [currentFeed entryAtIndex:index];
-    GDataLink* link = [entry feedLink];
-    youTubeQueryURL = [link href];
-    
-    //display link to play video
-    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL frame:CGRectMake(100, 170, 120, 120)];
-	[[self view] addSubview:youTubeView];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -339,13 +306,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [CoreFunctions setupYoutubeService];
 }
-*/
+
 
 - (void)viewDidUnload
 {
