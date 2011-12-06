@@ -10,13 +10,16 @@
 
 @implementation HistoryEntry
 
-/*
-- (id)init {
+
+- (id)initWithUrl: (NSString*) _url withName: (NSString*)_name withTimeStamp:(NSString*)_timeStamp withThumbUrl:(NSString*)_thumbUrl withDescription: (NSString*) _description {
     
     if (self = [super init]) {
-        
-        bestTime = [[NSString alloc] init];
-        allTimes = [[NSMutableArray alloc] init];
+ 
+        url = [[NSString alloc] initWithString: _url];
+        name = [[NSString alloc] initWithString: _name];
+        timeStamp = [[NSString alloc] initWithString: _timeStamp];
+        thumbUrl = [[NSString alloc] initWithString: _thumbUrl];
+        description = [[NSString alloc] initWithString: _description];
         
     }
     
@@ -28,8 +31,11 @@
     
     if (self = [super init]) {
         
-        bestTime = [[aDecoder decodeObjectForKey:@"bestTime"] retain];
-        allTimes = [[aDecoder decodeObjectForKey:@"allTimes"] retain];
+        url = [aDecoder decodeObjectForKey:@"url"];
+        name = [aDecoder decodeObjectForKey:@"name"];
+        timeStamp = [aDecoder decodeObjectForKey:@"timeStamp"];
+        thumbUrl = [aDecoder decodeObjectForKey:@"thumbUrl"];
+        description = [aDecoder decodeObjectForKey:@"description"];
         
     }
     
@@ -39,12 +45,12 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
+    [aCoder encodeObject:url forKey:@"url"];
     [aCoder encodeObject:name forKey:@"name"];
-    [aCoder encodeObject:bio forKey:@"bio"];
-    [aCoder encodeObject:phoneNumber forKey:@"phoneNumber"];
-    [aCoder encodeObject:scoreCard forKey:@"scoreCard"];
-    [aCoder encodeBool:eligible forKey:@"eligible"];
+    [aCoder encodeObject:timeStamp forKey:@"timeStamp"];
+    [aCoder encodeObject:thumbUrl forKey:@"thumbUrl"];
+    [aCoder encodeObject:description forKey:@"description"];
     
 }
-*/
+
 @end

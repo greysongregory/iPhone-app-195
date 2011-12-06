@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+NSString *url;
+NSString *name;
+NSString *timeStamp;
+NSString *thumbUrl;
+NSString *description;
+
 @interface HistoryEntry : NSObject
 
+- (id)initWithUrl: (NSString*) _url withName: (NSString*)_name withTimeStamp:(NSString*)_timeStamp withThumbUrl:(NSString*)_thumbUrl withDescription: (NSString*) _description;
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
 @end

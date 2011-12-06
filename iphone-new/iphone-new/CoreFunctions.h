@@ -17,6 +17,7 @@ GDataServiceGoogleYouTube *service;
 GDataFeedYouTubeVideo *currentFeed;
 NSString *youTubeQueryURL;    
 YouTubeView *youTubeView;
+NSMutableArray *history;
 
 @interface CoreFunctions : NSObject
 
@@ -31,5 +32,11 @@ YouTubeView *youTubeView;
 + (void) processYoutubeResults: (GDataServiceTicket *)ticket
 finishedWithFeed:(GDataFeedYouTubeVideo *)feed
 error:(NSError *)error;
+
++ (void)fetchEntryImageURLString:(NSString *)urlString;
+
++ (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error;
+ 
++ (NSString*) getCurrentTime;
 
 @end
