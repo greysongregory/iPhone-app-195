@@ -218,7 +218,7 @@
 }
 
 - (void) queryYoutube: (NSString*) searchString{
-    NSPrint( (@"querying youtube with %@\n",searchString) );
+    NSLog( (@"querying youtube with %@\n",searchString) );
     
     NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
     
@@ -238,18 +238,18 @@
 - (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error
 {
     if (error){
-        NSPrint([error description]);
+        NSLog([error description]);
     }
-    NSPrint([feed debugDescription]);
+    NSLog([feed debugDescription]);
     currentFeed = feed;
     
     //parse result and grab a random youtube video here
-    int index = arc4random()%youTubeMaxResults //this could give us out of bounds error if number of results is less than youTubeMaxResults
+    int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
     
     //(id)entryAtIndex:(NSUInteger)idx
     
-    GDataEntryBase* entry = [currentFeed entryAtIndex:index]
-    GDataLink* link = [entry feedLink]
+    GDataEntryBase* entry = [currentFeed entryAtIndex:index];
+    GDataLink* link = [entry feedLink];
     youTubeQueryURL = [link href];
     
     //display link to play video

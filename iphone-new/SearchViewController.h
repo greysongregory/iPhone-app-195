@@ -9,6 +9,7 @@
 #import "YouTubeView.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "GData.h"
 
 @interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
     int takeOrChoose;
@@ -33,6 +34,8 @@
     YouTubeView *youTubeView;
     NSString *youTubeQueryURL;
     GDataFeedYouTubeVideo* currentFeed;
+    GDataServiceGoogleYouTube *service;
+    
 }
 - (void) queryYoutube: (NSString*) searchString;
 - (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error;
