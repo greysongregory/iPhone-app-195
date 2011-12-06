@@ -22,11 +22,10 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 
 
 - (id) init{
-	if (self == [super init]) {
-		parser = [[SBJsonParser alloc] init];
-		updatePollDelayInSeconds = 1;
-        pollInProgress = NO;
-	}
+    parser = [[SBJsonParser alloc] init];
+    updatePollDelayInSeconds = 1;
+    pollInProgress = NO;
+    receivedData = [NSMutableData data];
     NSString *img = [NSString stringWithFormat: @"%@/iphone-app/duracell1.jpg", NSHomeDirectory()];
     [self getQueryFromImage: img];
 	return self;
@@ -220,9 +219,13 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    NSLog([receivedData description]);
     // do something with the data
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-	NSLog(@"Response %@\n", responseString);	
+	NSLog(@"Response1: %@\n", responseString);	
+    
+    NSString *responseString2 = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
+	NSLog(@"Response2: %@\n", responseString2);
     
     
     if (pollInProgress){

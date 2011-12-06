@@ -18,7 +18,7 @@ GDataFeedYouTubeVideo *cuurentFeed;
 
 @interface CoreFunctions : NSObject
 
-- (void) doSomething;
++ (void) run;
 
 - (void) setupYoutubeService;
 

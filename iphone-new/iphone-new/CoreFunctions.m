@@ -49,8 +49,8 @@ URL findVideoByLocation(location)
 
 */
 
-- (void) run{
-    NSPrint(@"Started");
++ (void) run{
+    NSLog(@"Started");
     ImageRecognition *imgRec = [[ImageRecognition alloc] init];
 }
 
@@ -92,7 +92,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 
 - (void) queryYoutube: (NSString*) searchString{
-    NSPrint( (@"querying youtube with %@\n",searchString) );
+    NSLog( (@"querying youtube with %@\n",searchString) );
     
     NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
     
@@ -113,9 +113,9 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
               finishedWithFeed:(GDataFeedYouTubeVideo *)feed
                          error:(NSError *)error{
     if (error){
-        NSPrint([error description]);
+        NSLog([error description]);
     }
-    NSPrint([feed debugDescription]);
+    NSLog([feed debugDescription]);
     cuurentFeed = feed;
 }
 
