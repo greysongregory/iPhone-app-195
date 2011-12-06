@@ -49,18 +49,7 @@ URL findVideoByLocation(location)
 
 */
 
-#if defined(TARGET_IPHONE_SIMULATOR)
-#define LogMethod() printf("%s\n", [[NSString stringWithFormat:@"Simulator-[%@ %s]", self, _cmd] cStringUsingEncoding:NSUTF8StringEncoding]);
-#else
-#define LogMethod() NSLog(@"-[%@ %s]", self, _cmd])
-#endif/Users/Vin/Documents/iPhone-app-195/iphone-app/iphone-app/imageRecognition.m
-
-void NSPrint (NSString *str)
-{
-    [str writeToFile:@"/dev/stdout" atomically:NO encoding:NSUTF8StringEncoding error:nil];
-}
-
-- (void) doSomething{
+- (void) run{
     NSPrint(@"Started");
     ImageRecognition *imgRec = [[ImageRecognition alloc] init];
 }
