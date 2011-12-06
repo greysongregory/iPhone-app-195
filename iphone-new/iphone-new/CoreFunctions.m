@@ -15,7 +15,7 @@
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "ImageRecognition.h"
-
+#import "HistoryEntry.h"
 
 #define CLIENT_ID @""
 #define CLIENT_SECRET @""
@@ -144,10 +144,23 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //(id)entryAtIndex:(NSUInteger)idx
     
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
+    GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
+    GDataMediaThumbnail *thumbnail = [[video mediaGroup] highQualityThumbnail];
+    NSString *imageURLString;
+    if (thumbnail != nil) {
+        imageURLString = [thumbnail URLString];
+        if (imageURLString) {
+            [CoreFunctions fetchEntryImageURLString:imageURLString];
+        }
+    }
     GDataLink* link = [entry HTMLLink];
     youTubeQueryURL = [link href];
     
     NSLog(@"Choosing url: %@", link);
+    
+    HistoryEntry *histEntry = [[HistoryEntry alloc] initWithUrl: youTubeQueryURL withName: [[entry title] stringValue] withTimeStamp: [CoreFunctions getCurrentTime] withThumbUrl: imageURLString withDescription: [[entry summary]stringValue]];
+    [history addObject: histEntry];
+    
     //display link to play video
     YouTubeView *youTubeView = [[YouTubeView alloc] 
                                 initWithStringAsURL:youTubeQueryURL 
@@ -162,9 +175,40 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
  //   [[uiv view] addSubview:youTubeView];
 }
 
++ (NSString*) getCurrentTime{
+    NSDateFormatter *formatter;
+    NSString        *dateString;
+    
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    
+    dateString = [formatter stringFromDate:[NSDate date]];
+    return dateString;
 + (void) setUIV:(UIViewController*) uivc
 {
     uiv = uivc;
 }
+
+//--------thumbnail functions-----------//
+
+
+- (void)fetchEntryImageURLString:(NSString *)urlString {
+    GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:urlString];
+    [fetcher setComment:@"thumbnail"];
+    [fetcher beginFetchWithDelegate:self
+                  didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
+}
+
+- (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
+    if (error == nil) {
+        // got the data; display it in the image view
+        //NSImage *image = [[[NSImage alloc] initWithData:data] autorelease];
+        
+       // [mEntryImageView setImage:image];
+    } else {
+        NSLog(@"imageFetcher:%@ failedWithError:%@", fetcher,  error);
+    }
+}
+
 
 @end

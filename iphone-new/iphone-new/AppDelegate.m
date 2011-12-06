@@ -15,6 +15,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    // unarchive history
+   // NSMutableArray *history = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/history.archive"];
+    
     [CoreFunctions run];
     // Override point for customization after application launch.
     return YES;
@@ -52,7 +57,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    /*
+    
+    // archive history
+    
+    //[NSKeyedArchiver archiveRootObject:history toFile:@"/history.archive"];
+    
+     
+     /*
      Called when the application is about to terminate.
      Save data if appropriate.
      See also applicationDidEnterBackground:.
