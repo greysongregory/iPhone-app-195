@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "GData.h"
 //#import "UIImagePickerController.h"
 #define kAccelerometerFrequency        50.0 //Hz
 #define kFilteringFactor 0.1
@@ -100,7 +101,7 @@
     NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
     
     //query youtube here with artistAndTitle as the search string
-    [queryYoutube artistAndTitle];
+    [self queryYoutube:artistAndTitle];
     
 }
 
