@@ -17,6 +17,7 @@ GDataServiceGoogleYouTube *service;
 GDataFeedYouTubeVideo *currentFeed;
 NSString *youTubeQueryURL;    
 YouTubeView *youTubeView;
+UIViewController* uiv;
 
 @interface CoreFunctions : NSObject
 
@@ -29,5 +30,7 @@ YouTubeView *youTubeView;
 + (void) processYoutubeResults: (GDataServiceTicket *)ticket
 finishedWithFeed:(GDataFeedYouTubeVideo *)feed
 error:(NSError *)error;
+
++ (void) setUIV:(UIViewController*) uivc;
 
 @end

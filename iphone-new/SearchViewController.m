@@ -105,8 +105,10 @@
     NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
     
     //query youtube here with artistAndTitle as the search string
-    [CoreFunctions queryYoutube:artistAndTitle];
+    [CoreFunctions setUIV:self];
     
+    [CoreFunctions queryYoutube:artistAndTitle];
+
 }
 
 - (IBAction)useLocation:(id)sender

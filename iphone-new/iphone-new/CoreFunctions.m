@@ -93,6 +93,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 
 + (void) queryYoutube: (NSString*) searchString{
+    youTubeView = nil;
     NSLog( (@"querying youtube with %@\n",searchString) );
     
     NSURL *feedURL = [GDataServiceGoogleYouTube youTubeURLForFeedID:nil];
@@ -128,9 +129,17 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     youTubeQueryURL = [link href];
     
     //display link to play video
-    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL frame:CGRectMake(100, 170, 120, 120)];
-	[[self view] addSubview:youTubeView];
+    
+    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL];
+    
+    //display view
+    //UIView *thisView = (UIView*)[self.view viewWithTag:99];
+    [[uiv view] addSubview:youTubeView];
 }
 
++ (void) setUIV:(UIViewController*) uivc
+{
+    uiv = uivc;
+}
 
 @end
