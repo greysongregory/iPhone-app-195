@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 University of Pennsylvania. All rights reserved.
 //
 
+#import "YouTubeView.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -29,7 +30,12 @@
     
     NSMutableData *receivedData;
 
+    YouTubeView *youTubeView;
+    NSString *youTubeQueryURL;
+    GDataFeedYouTubeVideo* currentFeed;
 }
+- (void) queryYoutube: (NSString*) searchString;
+- (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error;
 
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)choosePhoto:(id)sender;
