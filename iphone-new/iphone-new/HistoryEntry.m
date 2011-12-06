@@ -10,6 +10,7 @@
 
 @implementation HistoryEntry
 
+/*
 - (id)init {
     
     if (self = [super init]) {
@@ -45,5 +46,5 @@
     [aCoder encodeBool:eligible forKey:@"eligible"];
     
 }
-
+*/
 @end
