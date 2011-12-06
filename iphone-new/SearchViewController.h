@@ -35,9 +35,6 @@
     CLLocationManager *locationManager;
     
     NSMutableData *receivedData;
-
-    YouTubeView *youTubeView;
-    NSString *youTubeQueryURL;    
 }
 
 - (IBAction)takePhoto:(id)sender;
