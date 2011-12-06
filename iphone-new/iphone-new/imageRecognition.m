@@ -15,6 +15,7 @@
 #define IMAGE_REC_API_KEY @"94288b6c52cf41ef82ec0ef7c0da00a5"
 #define IMAGE_REC_SECRET @"31a85ee648a847f798f58420c4004243"
 #define IMAGE_REC_POLL_URL @"http://api.iqengines.com/v1.2/update/"
+#define MAX_PIXELS 636.0
 
 const NSString *boundary = @"---------------------------14737809831466499882746641449";
 @implementation ImageRecognition
@@ -26,8 +27,8 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     updatePollDelayInSeconds = 1;
     pollInProgress = NO;
     receivedData = [NSMutableData data];
-    NSString *img = [NSString stringWithFormat: @"%@/iphone-app/duracell1.jpg", NSHomeDirectory()];
-    [self getQueryFromImage: img];
+    NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
+    [self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
 	return self;
 }
 
@@ -62,13 +63,13 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 	return hash;
 }
 
-- (void*) getQueryFromImage: (NSString*) filename{
+- (void) sendImageForRecognition: (UIImage*) image{
     
     
     //Setup post params
     
     NSString * timeStamp = [self getCurrentTime];
-    NSString * img = filename;
+ //   NSString * filename = "";
     NSString * api_key = IMAGE_REC_API_KEY;
     NSString * apiSig = [self createApiSignature: IMAGE_REC_SECRET andData:[NSString stringWithFormat:@"api_key%@img%@json1time_stamp%@", api_key, @"duracell1.jpg", timeStamp] ];
 
@@ -77,7 +78,7 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 	 getting the image back out of the UIImageView
 	 setting the quality to 90
      */
-    UIImage *image = [[UIImage alloc] initWithContentsOfFile:img];
+    image = [self sizedImageToSpecs: image];
 	// setting up the URL to post to
 	NSString *urlString = IMAGE_REC_URL;
     
@@ -136,28 +137,74 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 
 
 
-- (void)processResults:(NSArray *)result{
+- (void)processResults:(NSArray *)results{
     
-	if (result == nil) {
+	if (results == nil) {
 		return;
 	}
     
-	for (NSDictionary *dict in result) {
-		NSString *sig = [dict objectForKey:@"qid"];
-		NSDictionary *properties = [dict objectForKey:@"qid_data"];
-		IQResult *result = [[IQResult alloc]initWithSignature:sig];
+    IQResult *result;
+    
+	NSDictionary *dict = [results objectAtIndex: 0];
+    NSString *sig = [dict objectForKey:@"qid"];
+    NSDictionary *properties = [dict objectForKey:@"qid_data"];
+    result = [[IQResult alloc]initWithSignature:sig];
 
-        result.color = [self stringValue:[properties objectForKey:@"color"]];
-        result.isbn = [self stringValue:[properties objectForKey:@"isbn"]];
-        result.labels = [self stringValue:[properties objectForKey:@"labels"]];
-        result.sku = [self stringValue:[properties objectForKey:@"sku"]];
-        result.upc = [self stringValue:[properties objectForKey:@"upc"]];
-        result.url = [self stringValue:[properties objectForKey:@"url"]];
-            
-        pollInProgress = NO;
+    result.color = [self stringValue:[properties objectForKey:@"color"]];
+    result.isbn = [self stringValue:[properties objectForKey:@"isbn"]];
+    result.labels = [self stringValue:[properties objectForKey:@"labels"]];
+    result.sku = [self stringValue:[properties objectForKey:@"sku"]];
+    result.upc = [self stringValue:[properties objectForKey:@"upc"]];
+    result.url = [self stringValue:[properties objectForKey:@"url"]];
+	
+    pollInProgress = NO;
+    NSString *searchString = result.labels;
+    NSLog(searchString);
+    //[queryYoutube: searchString]
+}
+
+- (UIImage *)sizedImageToSpecs:(UIImage *)image
+{	
+    
+	int width = image.size.width;
+	int height = image.size.height;
+    
+	// it is already within limits so return what was passed in
+	if (width < 640 && height < 640 ) {
+		return image; 
 	}
     
+	// at least one size is over the limit, resize based on largest side
+	double adjustFactor;
+	if (width < height) {
+		//its height is bigger, bring it under limit
+		adjustFactor = (double)  MAX_PIXELS / height;
+	}else {
+		//its width is bigger, bring it under limits
+		adjustFactor = (double)  MAX_PIXELS / width;
+	}
+    
+	// maintain aspect
+	CGSize newSize; 
+	newSize.height = height * adjustFactor;
+	newSize.width = width * adjustFactor;
+    
+	return [self imageWithImage:image scaledToSize:newSize];
 }
+
+
+
+- (UIImage*)imageWithImage:(UIImage*)image 
+              scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 
 - (NSString *)stringValue:(id)value{
     
@@ -178,20 +225,22 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     NSString * api_key = IMAGE_REC_API_KEY;
     NSString * apiSig = [self createApiSignature: IMAGE_REC_SECRET andData:[NSString stringWithFormat:@"api_key%@json1time_stamp%@", api_key, timeStamp] ];
     
-    NSString *postParams = [[NSString alloc] initWithFormat:@"api_key=$@&api_sig=$@&json=1&time_stamp=%@", api_key, apiSig, timeStamp];
-    
+    NSString *postParams = [[NSString alloc] initWithFormat:@"api_key=%@&api_sig=%@&json=1&time_stamp=%@", api_key, apiSig, timeStamp];
     
     
     // setting up the request object now
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
 	[request setURL:[NSURL URLWithString:urlString]];
 	[request setHTTPMethod:@"POST"];
+    [request setTimeoutInterval: 90];
     
 
     [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
      NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     NSLog(@"Sending poll request");
 }
+
+
 
 /*--------------------HTTP Request callbacks----------------*/
 
@@ -219,23 +268,25 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog([receivedData description]);
     // do something with the data
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 	NSLog(@"Response1: %@\n", responseString);	
     
-    NSString *responseString2 = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-	NSLog(@"Response2: %@\n", responseString2);
     
+    NSDictionary *rootLevel = [parser objectWithString:responseString];
+    NSDictionary *dataLevel = [rootLevel objectForKey:@"data"];
     
     if (pollInProgress){
-        
-        [self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
-        //[self processResults:[dataLevel objectForKey:@"results"]];
+        NSArray *results = [dataLevel objectForKey:@"results"];
+        if (results != nil){
+            [self processResults: results];
+        }
+        else{
+            [self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
+        }
     }
     else{
-        NSDictionary *rootLevel = [parser objectWithString:responseString];
-        NSDictionary *dataLevel = [rootLevel objectForKey:@"data"];
+        
         NSNumber *errorNo = [dataLevel objectForKey:@"error"];
         if ([errorNo intValue] != 0) {
             NSString *message = [dataLevel objectForKey:@"comment"];
