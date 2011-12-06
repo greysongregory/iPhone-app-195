@@ -179,6 +179,9 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     dateString = [formatter stringFromDate:[NSDate date]];
     return dateString;
++ (void) setUIV:(UIViewController*) uivc
+{
+    uiv = uivc;
 }
 
 //--------thumbnail functions-----------//
