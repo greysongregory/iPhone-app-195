@@ -149,12 +149,17 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     NSLog(@"Choosing url: %@", link);
     //display link to play video
+    YouTubeView *youTubeView = [[YouTubeView alloc] 
+                                initWithStringAsURL:youTubeQueryURL 
+                                frame:CGRectMake(100, 170, 120, 120)];
     
-    youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL];
+    [[uiv view] addSubview:youTubeView];
+    
+ //   youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL];
     
     //display view
     //UIView *thisView = (UIView*)[self.view viewWithTag:99];
-    [[uiv view] addSubview:youTubeView];
+ //   [[uiv view] addSubview:youTubeView];
 }
 
 + (void) setUIV:(UIViewController*) uivc
