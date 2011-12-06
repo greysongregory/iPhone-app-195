@@ -92,7 +92,7 @@
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
 			remoteInfo = DevelopmentTestTool;
 		};
-		204C47C5148B518B0039CB7D /* PBXContainerItemProxy */ = {
+        204C47C5148B518B0039CB7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 204C47AE148B51520039CB7D /* GData.xcodeproj */;
 			proxyType = 1;
@@ -348,7 +348,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				204C47C6148B518B0039CB7D /* PBXTargetDependency */,
 			);
 			name = "iphone-app";
 			productName = "iphone-app";
@@ -527,11 +526,6 @@
 			isa = PBXTargetDependency;
 			target = 204C4766148B45C30039CB7D /* iphone-app */;
 			targetProxy = 204C4798148B45C40039CB7D /* PBXContainerItemProxy */;
-		};
-		204C47C6148B518B0039CB7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GDataTouchStaticLib;
-			targetProxy = 204C47C5148B518B0039CB7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
