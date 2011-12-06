@@ -9,7 +9,12 @@
 #import "YouTubeView.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Foundation/Foundation.h>
+
 #import "GData.h"
+#import "GDataFeedPhotoAlbum.h"
+#import "GDataFeedPhoto.h"
+
 
 @interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
     int takeOrChoose;
@@ -32,13 +37,8 @@
     NSMutableData *receivedData;
 
     YouTubeView *youTubeView;
-    NSString *youTubeQueryURL;
-    GDataFeedYouTubeVideo* currentFeed;
-    GDataServiceGoogleYouTube *service;
-    
+    NSString *youTubeQueryURL;    
 }
-- (void) queryYoutube: (NSString*) searchString;
-- (void) processYoutubeResults: (GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedYouTubeVideo *)feed error:(NSError *)error;
 
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)choosePhoto:(id)sender;

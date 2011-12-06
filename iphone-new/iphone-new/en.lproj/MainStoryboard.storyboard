@@ -219,70 +219,15 @@
         <scene sceneID="ADg-lb-8x8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5k-jn-vMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="AccelerometerSearch" title="Accelerometer Search" id="5IF-5j-C5K" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hAK-pd-bwe">
+                <viewController storyboardIdentifier="AccelerometerSearch" title="YouTube View" wantsFullScreenLayout="YES" id="5IF-5j-C5K" userLabel="YTV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hAK-pd-bwe" customClass="YouTubeView">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1756" y="110"/>
-        </scene>
-        <scene sceneID="JYN-hB-PES">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6fg-Wh-pWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="LocationSearch" title="Location Search" id="ga0-fH-9cz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QxX-TZ-oBE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="2102" y="-104"/>
-        </scene>
-        <scene sceneID="D0I-ES-NeD">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gzz-BP-YhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="NewPhotoSearch" title="New Photo Search" id="JKk-cu-xVs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z2Y-CN-B7K">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qzt-ZH-UUQ">
-                                <rect key="frame" x="96" y="297" width="114" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Take Photo">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search by New Photo" id="y4l-EV-ZdH"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1763" y="-1037"/>
-        </scene>
-        <scene sceneID="rOK-sN-tcg">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="41K-9p-Rjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="ExsistingPhotoSearch" title="Exsisting Photo Search" id="KKm-0N-F2E" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JEf-ox-9la">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="3g3-dH-b2W"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1764" y="-467"/>
+            <point key="canvasLocation" x="1764" y="145"/>
         </scene>
         <scene sceneID="HVD-1v-FsV">
             <objects>

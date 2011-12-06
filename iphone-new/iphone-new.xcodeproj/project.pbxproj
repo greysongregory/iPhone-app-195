@@ -25,7 +25,6 @@
 		20251924148D963800EC78CA /* imageRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251920148D963800EC78CA /* imageRecognition.m */; };
 		20251925148D963800EC78CA /* IQResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251922148D963800EC78CA /* IQResult.m */; };
 		2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2025193E148D980500EC78CA /* NSObject+SBJson.m */; };
-		20251973148D9A1200EC78CA /* libGDataTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */; };
 		3892145F148C05CB0047CCA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3892145E148C05CB0047CCA5 /* UIKit.framework */; };
 		38921461148C05CB0047CCA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921460148C05CB0047CCA5 /* Foundation.framework */; };
 		38921463148C05CB0047CCA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921462148C05CB0047CCA5 /* CoreGraphics.framework */; };
@@ -46,50 +45,44 @@
 		389214E0148C983F0047CCA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389214DF148C983E0047CCA5 /* MobileCoreServices.framework */; };
 		389214E6148CB9CD0047CCA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389214E5148CB9CD0047CCA5 /* CoreLocation.framework */; };
 		389214F5148D8B770047CCA5 /* YouTubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 389214F4148D8B760047CCA5 /* YouTubeView.m */; };
+		38F385F6148DB97E00C97E26 /* libGDataTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38503FAF148DB68C00B13076 /* libGDataTouchStaticLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		20251966148D99ED00EC78CA /* PBXContainerItemProxy */ = {
+		38503FAC148DB68C00B13076 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
 			remoteInfo = GDataFramework;
 		};
-		20251968148D99ED00EC78CA /* PBXContainerItemProxy */ = {
+		38503FAE148DB68C00B13076 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1C6E0F1027B3CE00B46459;
 			remoteInfo = GDataTouchStaticLib;
 		};
-		2025196A148D99ED00EC78CA /* PBXContainerItemProxy */ = {
+		38503FB0148DB68C00B13076 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F14A9DD0B1276B70072EBB8;
 			remoteInfo = GDataUnitTests;
 		};
-		2025196C148D99ED00EC78CA /* PBXContainerItemProxy */ = {
+		38503FB2148DB68C00B13076 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F85E018103B83B700B4C418;
 			remoteInfo = GDataIPhoneUnitTests;
 		};
-		2025196E148D99ED00EC78CA /* PBXContainerItemProxy */ = {
+		38503FB4148DB68C00B13076 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
 			remoteInfo = DevelopmentTestTool;
-		};
-		20251971148D9A0900EC78CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F1C6E0E1027B3CE00B46459;
-			remoteInfo = GDataTouchStaticLib;
 		};
 		38921480148C05CB0047CCA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -97,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 38921459148C05CB0047CCA5;
 			remoteInfo = "iphone-new";
+		};
+		38F385F4148DB97800C97E26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F1C6E0E1027B3CE00B46459;
+			remoteInfo = GDataTouchStaticLib;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -135,7 +135,7 @@
 		20251922148D963800EC78CA /* IQResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQResult.m; sourceTree = "<group>"; };
 		2025193D148D980500EC78CA /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		2025193E148D980500EC78CA /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
-		2025195A148D99EC00EC78CA /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
+		38503FA4148DB68C00B13076 /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
 		3892145A148C05CB0047CCA5 /* iphone-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iphone-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3892145E148C05CB0047CCA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		38921460148C05CB0047CCA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20251973148D9A1200EC78CA /* libGDataTouchStaticLib.a in Frameworks */,
+				38F385F6148DB97E00C97E26 /* libGDataTouchStaticLib.a in Frameworks */,
 				202518E4148D93D000EC78CA /* SystemConfiguration.framework in Frameworks */,
 				202518E2148D93C800EC78CA /* Security.framework in Frameworks */,
 				389214E6148CB9CD0047CCA5 /* CoreLocation.framework in Frameworks */,
@@ -230,14 +230,14 @@
 			name = SBJson;
 			sourceTree = "<group>";
 		};
-		2025195B148D99EC00EC78CA /* Products */ = {
+		38503FA5148DB68C00B13076 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				20251967148D99ED00EC78CA /* GData.framework */,
-				20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */,
-				2025196B148D99ED00EC78CA /* GDataUnitTests.octest */,
-				2025196D148D99ED00EC78CA /* GDataIPhoneUnitTests.octest */,
-				2025196F148D99ED00EC78CA /* DevelopmentTestTool */,
+				38503FAD148DB68C00B13076 /* GData.framework */,
+				38503FAF148DB68C00B13076 /* libGDataTouchStaticLib.a */,
+				38503FB1148DB68C00B13076 /* GDataUnitTests.octest */,
+				38503FB3148DB68C00B13076 /* GDataIPhoneUnitTests.octest */,
+				38503FB5148DB68C00B13076 /* DevelopmentTestTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 		3892144F148C05CB0047CCA5 = {
 			isa = PBXGroup;
 			children = (
-				2025195A148D99EC00EC78CA /* GData.xcodeproj */,
+				38503FA4148DB68C00B13076 /* GData.xcodeproj */,
 				202518E3148D93D000EC78CA /* SystemConfiguration.framework */,
 				202518E1148D93C800EC78CA /* Security.framework */,
 				389214E5148CB9CD0047CCA5 /* CoreLocation.framework */,
@@ -351,7 +351,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				20251972148D9A0900EC78CA /* PBXTargetDependency */,
+				38F385F5148DB97800C97E26 /* PBXTargetDependency */,
 			);
 			name = "iphone-new";
 			productName = "iphone-new";
@@ -398,8 +398,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2025195B148D99EC00EC78CA /* Products */;
-					ProjectRef = 2025195A148D99EC00EC78CA /* GData.xcodeproj */;
+					ProductGroup = 38503FA5148DB68C00B13076 /* Products */;
+					ProjectRef = 38503FA4148DB68C00B13076 /* GData.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -411,39 +411,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		20251967148D99ED00EC78CA /* GData.framework */ = {
+		38503FAD148DB68C00B13076 /* GData.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GData.framework;
-			remoteRef = 20251966148D99ED00EC78CA /* PBXContainerItemProxy */;
+			remoteRef = 38503FAC148DB68C00B13076 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		20251969148D99ED00EC78CA /* libGDataTouchStaticLib.a */ = {
+		38503FAF148DB68C00B13076 /* libGDataTouchStaticLib.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libGDataTouchStaticLib.a;
-			remoteRef = 20251968148D99ED00EC78CA /* PBXContainerItemProxy */;
+			remoteRef = 38503FAE148DB68C00B13076 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2025196B148D99ED00EC78CA /* GDataUnitTests.octest */ = {
+		38503FB1148DB68C00B13076 /* GDataUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GDataUnitTests.octest;
-			remoteRef = 2025196A148D99ED00EC78CA /* PBXContainerItemProxy */;
+			remoteRef = 38503FB0148DB68C00B13076 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2025196D148D99ED00EC78CA /* GDataIPhoneUnitTests.octest */ = {
+		38503FB3148DB68C00B13076 /* GDataIPhoneUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GDataIPhoneUnitTests.octest;
-			remoteRef = 2025196C148D99ED00EC78CA /* PBXContainerItemProxy */;
+			remoteRef = 38503FB2148DB68C00B13076 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2025196F148D99ED00EC78CA /* DevelopmentTestTool */ = {
+		38503FB5148DB68C00B13076 /* DevelopmentTestTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = DevelopmentTestTool;
-			remoteRef = 2025196E148D99ED00EC78CA /* PBXContainerItemProxy */;
+			remoteRef = 38503FB4148DB68C00B13076 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -526,15 +526,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		20251972148D9A0900EC78CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GDataTouchStaticLib;
-			targetProxy = 20251971148D9A0900EC78CA /* PBXContainerItemProxy */;
-		};
 		38921481148C05CB0047CCA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 38921459148C05CB0047CCA5 /* iphone-new */;
 			targetProxy = 38921480148C05CB0047CCA5 /* PBXContainerItemProxy */;
+		};
+		38F385F5148DB97800C97E26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GDataTouchStaticLib;
+			targetProxy = 38F385F4148DB97800C97E26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
