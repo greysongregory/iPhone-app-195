@@ -140,9 +140,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     //parse result and grab a random youtube video here
     int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
-    
-    //(id)entryAtIndex:(NSUInteger)idx
-    
+        
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
     GDataMediaThumbnail *thumbnail = [[video mediaGroup] highQualityThumbnail];
