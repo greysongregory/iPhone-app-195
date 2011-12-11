@@ -8,6 +8,8 @@
 
 #import "HistoryViewController.h"
 #import "HistoryItemViewController.h"
+#import "HistoryEntry.h"
+#import "History.h"
 
 @implementation HistoryViewController
 
@@ -34,12 +36,9 @@
 {
     [super viewDidLoad];
     //Here define the array with the history information
-   historyElements = [NSMutableArray arrayWithObjects:
-                     @"History 1",
-                     @"History 2",
-                     @"History 3",
-                     @"History 4",
-                     nil];
+    History *history = [[History alloc] init];
+    
+    NSArray *historyElements = [history getEntries];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

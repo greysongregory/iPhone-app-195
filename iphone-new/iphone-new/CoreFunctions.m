@@ -30,27 +30,6 @@
 
 
 
-/*Possible methods
-
-URL findVideo(query, options)
-
-//Image recognition
-query getQueryFromImage(filename)
- 
-/accelerometer
-accel recordAccel()
- 
-bpm getBPMFromAccel
- 
-query getQueryFromBPM
- 
-//location
-location getLocation()
- 
-URL findVideoByLocation(location)
-
-*/
-
 + (void) run{
     NSLog(@"Started");
     ImageRecognition *imgRec = [[ImageRecognition alloc] init];
@@ -225,6 +204,8 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     dateString = [formatter stringFromDate:[NSDate date]];
     return dateString;
+}
+
 + (void) setUIV:(UIViewController*) uivc
 {
     uiv = uivc;

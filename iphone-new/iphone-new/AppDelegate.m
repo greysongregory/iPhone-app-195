@@ -18,7 +18,7 @@
     
     
     // unarchive history
-   // NSMutableArray *history = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/history.archive"];
+   
     
     [CoreFunctions run];
     // Override point for customization after application launch.
@@ -60,7 +60,7 @@
     
     // archive history
     
-    //[NSKeyedArchiver archiveRootObject:history toFile:@"/history.archive"];
+    
     
      
      /*
