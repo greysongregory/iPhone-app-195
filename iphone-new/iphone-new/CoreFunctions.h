@@ -18,7 +18,10 @@ GDataFeedYouTubeVideo *currentFeed;
 NSString *youTubeQueryURL;    
 YouTubeView *youTubeView;
 NSMutableArray *history;
-UIViewController* uiv;
+UIViewController *uiv;
+
+NSMutableArray *visitedIndices;
+NSArray *currentFeedResults; //this may already be currentFeed, in which case we can just use that var
 
 @interface CoreFunctions : NSObject
 

@@ -140,7 +140,9 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     
     //parse result and grab a random youtube video here
     int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
-        
+    //save the index of the video we showed already (used in stumble to avoid repeated videos)
+    visitedIndices = [NSArray arrayWithObject:index];
+    
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
     GDataMediaThumbnail *thumbnail = [[video mediaGroup] highQualityThumbnail];
@@ -171,6 +173,47 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //display view
     //UIView *thisView = (UIView*)[self.view viewWithTag:99];
  //   [[uiv view] addSubview:youTubeView];
+}
+
++ (void) stumbleToNextVideo:
+{
+    if ( [visitedIndices count] >= youTubeMaxResults )
+    {
+        //do something like make a warning pop up...
+        //hit OK and then tke to history page
+    }
+    do
+    {
+        int index = arc4random()%youTubeMaxResults; //this could give us out of bounds     
+    }
+    while ([visitedIndices containsObject:index] == YES);
+
+    [visitedIndices addObject:index]
+     
+    GDataEntryBase* entry = [currentFeed entryAtIndex:index];
+    GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
+    GDataMediaThumbnail *thumbnail = [[video mediaGroup] highQualityThumbnail];
+    NSString *imageURLString;
+    if (thumbnail != nil) {
+        imageURLString = [thumbnail URLString];
+        if (imageURLString) {
+            [CoreFunctions fetchEntryImageURLString:imageURLString];
+        }
+    }
+    GDataLink* link = [entry HTMLLink];
+    youTubeQueryURL = [link href];
+    
+    NSLog(@"Choosing url: %@", link);
+    
+    HistoryEntry *histEntry = [[HistoryEntry alloc] initWithUrl: youTubeQueryURL withName: [[entry title] stringValue] withTimeStamp: [CoreFunctions getCurrentTime] withThumbUrl: imageURLString withDescription: [[entry summary]stringValue]];
+    [history addObject: histEntry];
+    
+    //display link to play video
+    YouTubeView *youTubeView = [[YouTubeView alloc] 
+                                initWithStringAsURL:youTubeQueryURL 
+                                frame:CGRectMake(100, 170, 120, 120)];
+    
+    [[uiv view] addSubview:youTubeView];
 }
 
 + (NSString*) getCurrentTime{
