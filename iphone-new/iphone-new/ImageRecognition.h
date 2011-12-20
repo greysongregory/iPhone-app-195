@@ -17,7 +17,10 @@ BOOL pollInProgress;
 
 @interface ImageRecognition : NSObject{
     NSString *searchString;
+    UIViewController *viewController;
 }
+
+- (id) initWithImageAndView:(UIImage*) img: (UIViewController*) view;
 
 - (NSString*) getSearchString;
 

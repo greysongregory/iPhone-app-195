@@ -167,7 +167,7 @@
     
     
         //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
-        ir = [[ImageRecognition alloc]initWithImage:image];
+        ir = [[ImageRecognition alloc]initWithImageAndView:image :self];
         image = [ir sizedImageToSpecs:image];
         [ir sendImageForRecognition:image];
         
