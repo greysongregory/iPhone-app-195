@@ -25,7 +25,12 @@
         name = [[NSString alloc] initWithString: _name];
         timeStamp = [[NSString alloc] initWithString: _timeStamp];
         thumbUrl = [[NSString alloc] initWithString: _thumbUrl];
-        description = [[NSString alloc] initWithString: _description];
+        if (_description) {
+            description = [[NSString alloc] initWithString: _description];
+        }
+        else{
+            description = @"N/A";
+        }
         
     }
     

@@ -217,14 +217,14 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 //--------thumbnail functions-----------//
 
 
-- (void)fetchEntryImageURLString:(NSString *)urlString {
++ (void)fetchEntryImageURLString:(NSString *)urlString {
     GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:urlString];
     [fetcher setComment:@"thumbnail"];
     [fetcher beginFetchWithDelegate:self
                   didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
 }
 
-- (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
++ (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
     if (error == nil) {
         // got the data; display it in the image view
         //NSImage *image = [[[NSImage alloc] initWithData:data] autorelease];
