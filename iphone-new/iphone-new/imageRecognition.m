@@ -34,6 +34,18 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 	return self;
 }
 
+- (id) initWithImageAndView:(UIImage*) img: (UIViewController*) view{
+    self = [super init];
+    parser = [[SBJsonParser alloc] init];
+    updatePollDelayInSeconds = 1;
+    pollInProgress = NO;
+    receivedData = [NSMutableData data];
+    viewController = view;
+    //NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
+    //[self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
+	return self;
+}
+
 - (NSString*) getSearchString{
     return searchString;
 }
@@ -167,6 +179,8 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     searchString = result.labels;
     NSLog(searchString);
     //[queryYoutube: searchString]
+    [CoreFunctions setUIV:viewController];
+    [CoreFunctions queryYoutube:searchString];
 }
 
 - (UIImage *)sizedImageToSpecs:(UIImage *)image
@@ -305,9 +319,7 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     }
     
     //youtube stuff?
-    //[CoreFunctions setUIV:***reference to ui serch view*****];
-    //[CoreFunctions queryYoutube:[ir getSearchString]];
-	
+
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
