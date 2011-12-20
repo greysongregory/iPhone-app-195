@@ -42,9 +42,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38921459148C05CB0047CCA5"
-            BuildableName = "iphone-new.app"
-            BlueprintName = "iphone-new"
-            ReferencedContainer = "container:iphone-new.xcodeproj">
+            BuildableName = "imageintent.app"
+            BlueprintName = "imageintent"
+            ReferencedContainer = "container:imageintent.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -60,9 +60,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38921459148C05CB0047CCA5"
-            BuildableName = "iphone-new.app"
-            BlueprintName = "iphone-new"
-            ReferencedContainer = "container:iphone-new.xcodeproj">
+            BuildableName = "imageintent.app"
+            BlueprintName = "imageintent"
+            ReferencedContainer = "container:imageintent.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

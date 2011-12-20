@@ -21,7 +21,7 @@
     
     if (self = [super init]) {
  
-        url = [[NSString alloc] initWithString: _url];
+      url = [[NSString alloc] initWithString: _url];
         name = [[NSString alloc] initWithString: _name];
         timeStamp = [[NSString alloc] initWithString: _timeStamp];
         thumbUrl = [[NSString alloc] initWithString: _thumbUrl];
