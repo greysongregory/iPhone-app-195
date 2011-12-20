@@ -10,6 +10,7 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "IQResult.h"
+#import "CoreFunctions.h"
 
 #define IMAGE_REC_URL @"http://api.iqengines.com/v1.2/query/"
 #define IMAGE_REC_API_KEY @"94288b6c52cf41ef82ec0ef7c0da00a5"
@@ -22,14 +23,19 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 
 
 
-- (id) init{
+- (id) initWithImage:(UIImage*) img{
+    self = [super init];
     parser = [[SBJsonParser alloc] init];
     updatePollDelayInSeconds = 1;
     pollInProgress = NO;
     receivedData = [NSMutableData data];
-    NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
-    [self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
+    //NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
+    //[self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
 	return self;
+}
+
+- (NSString*) getSearchString{
+    return searchString;
 }
 
 /*-------------------------IMAGE RECOGNITION METHODS--------------------------------*/
@@ -158,7 +164,7 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     result.url = [self stringValue:[properties objectForKey:@"url"]];
 	
     pollInProgress = NO;
-    NSString *searchString = result.labels;
+    searchString = result.labels;
     NSLog(searchString);
     //[queryYoutube: searchString]
 }
@@ -298,7 +304,9 @@ const NSString *boundary = @"---------------------------147378098314664998827466
         [self performSelector:@selector(doAsyncCheckRequest) withObject:nil afterDelay:updatePollDelayInSeconds];
     }
     
-    
+    //youtube stuff?
+    //[CoreFunctions setUIV:***reference to ui serch view*****];
+    //[CoreFunctions queryYoutube:[ir getSearchString]];
 	
 }
 

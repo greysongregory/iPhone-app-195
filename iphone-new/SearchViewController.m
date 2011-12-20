@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "CoreFunctions.h"
+#import "ImageRecognition.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 //#import "UIImagePickerController.h"
 #define kAccelerometerFrequency        50.0 //Hz
@@ -23,7 +24,7 @@
 
 @synthesize theAccelerometer;
 @synthesize locationManager;
-
+@synthesize ir;
 
 - (IBAction)takePhoto:(id)sender
 {
@@ -46,7 +47,8 @@
         // Show image picker
         [self presentModalViewController:imagePicker animated:YES];
 
-    //make request for IQ image recognition, parse result, make youtube request    
+        //make request for IQ image recognition, parse result, make youtube request   
+        
     }
     else
         NSLog(@"Camera is not available");
@@ -163,10 +165,19 @@
         // Write out the contents of home directory to console
         NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
     
-        // Dismiss the camera
+    
+        //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
+        ir = [[ImageRecognition alloc]initWithImage:image];
+        image = [ir sizedImageToSpecs:image];
+        [ir sendImageForRecognition:image];
+        
+        /*
+            these should be moved so they are called AFTER we get a response from IQ image rec.
+        [CoreFunctions setUIV:self];
+        [CoreFunctions queryYoutube:[ir getSearchString]];
+         */
         [self dismissModalViewControllerAnimated:YES];
     
-        //	[picker release];
     }
     else
     {
@@ -187,7 +198,12 @@
             } else {
                 imageToUse = originalImage;
             }
+         
+            
             // Do something with imageToUse
+            //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
+        
+        
         }
         
         [[picker parentViewController] dismissModalViewControllerAnimated: YES];

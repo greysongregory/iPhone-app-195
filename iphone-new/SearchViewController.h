@@ -15,6 +15,7 @@
 #import "GDataFeedPhotoAlbum.h"
 #import "GDataFeedPhoto.h"
 
+@class ImageRecognition;
 
 @interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
     int takeOrChoose;
@@ -55,5 +56,6 @@
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
+@property (nonatomic, retain) ImageRecognition *ir;
 
 @end

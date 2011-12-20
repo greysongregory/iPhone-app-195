@@ -15,7 +15,13 @@ int updatePollDelayInSeconds;
 BOOL pollInProgress;
 
 
-@interface ImageRecognition : NSObject
+@interface ImageRecognition : NSObject{
+    NSString *searchString;
+}
+
+- (NSString*) getSearchString;
+
+- (id) initWithImage: (UIImage*) img;
 
 - (NSString*) getCurrentTime;
 
