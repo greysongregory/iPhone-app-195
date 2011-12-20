@@ -120,7 +120,8 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //parse result and grab a random youtube video here
     int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
     //save the index of the video we showed already (used in stumble to avoid repeated videos)
-    visitedIndices = [NSArray arrayWithObject:index];
+    index_obj = [[NSNumber alloc] initWithInt:index];
+    visitedIndices = [NSArray arrayWithObject:index_obj];
     
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
@@ -154,20 +155,22 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
  //   [[uiv view] addSubview:youTubeView];
 }
 
-+ (void) stumbleToNextVideo:
++ (void) stumbleToNextVideo
 {
     if ( [visitedIndices count] >= youTubeMaxResults )
     {
+        //TODO: finish this mehtod
         //do something like make a warning pop up...
-        //hit OK and then tke to history page
+        //hit OK and then take to history page
     }
     do
     {
-        int index = arc4random()%youTubeMaxResults; //this could give us out of bounds     
+        int index = arc4random()%youTubeMaxResults; //this could give us out of bounds
+        index_obj = [[NSNumber alloc] initWithInt:index];
     }
-    while ([visitedIndices containsObject:index] == YES);
+    while ([visitedIndices containsObject:index_obj] == YES);
 
-    [visitedIndices addObject:index]
+    [visitedIndices addObject:index_obj];
      
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;

@@ -23,6 +23,8 @@ UIViewController *uiv;
 NSMutableArray *visitedIndices;
 NSArray *currentFeedResults; //this may already be currentFeed, in which case we can just use that var
 
+NSNumber *index_obj;
+
 @interface CoreFunctions : NSObject
 
 + (void) run;
