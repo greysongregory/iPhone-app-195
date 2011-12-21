@@ -17,11 +17,11 @@ NSString *description;
 
 @interface HistoryEntry : NSObject
 
-@property(nonatomic, assign) NSString *url;
-@property(nonatomic, assign) NSString *name;
-@property(nonatomic, assign) NSString *timeStamp;
-@property(nonatomic, assign) NSString *thumbUrl;
-@property(nonatomic, assign) NSString *description;
+@property(nonatomic, retain) NSString *url;
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, retain) NSString *timeStamp;
+@property(nonatomic, retain) NSString *thumbUrl;
+@property(nonatomic, retain) NSString *description;
 
 
 - (id)initWithUrl: (NSString*) _url withName: (NSString*)_name withTimeStamp:(NSString*)_timeStamp withThumbUrl:(NSString*)_thumbUrl withDescription: (NSString*) _description;

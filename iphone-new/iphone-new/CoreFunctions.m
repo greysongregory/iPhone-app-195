@@ -250,6 +250,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
                   didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
 }
 
+
 + (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
     if (error == nil) {
         // got the data; display it in the image view

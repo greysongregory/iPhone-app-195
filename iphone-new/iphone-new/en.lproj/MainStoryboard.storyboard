@@ -98,7 +98,7 @@
                             <outlet property="delegate" destination="xYa-nw-zer" id="CHl-N8-fnF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qfz-pA-RHU"/>
+                    <navigationItem key="navigationItem" title="Previously Watched" id="Qfz-pA-RHU"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1350" y="718"/>

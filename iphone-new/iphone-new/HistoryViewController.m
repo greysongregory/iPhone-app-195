@@ -11,6 +11,7 @@
 #import "HistoryEntry.h"
 #import "History.h"
 
+
 @implementation HistoryViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -109,13 +110,36 @@
     
     // Get the cell label using its tag and set it
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-    [cellLabel setText:[historyElements objectAtIndex:indexPath.row]];
+    [cellLabel setText:[[historyElements objectAtIndex:indexPath.row] name]];
     
     // get the cell imageview using its tag and set it
-    UIImageView *cellImage = (UIImageView *)[cell viewWithTag:2];
-    [cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
+   // UIImageView *cellImage = (UIImageView *)[cell viewWithTag:2];
+   // NSString *thumbnail = [[historyElements objectAtIndex:indexPath.row] thumbnail];
+    //if (thumbnail) {
+     //   [self fetchEntryImageURLString:thumbnail];
+   // }
+    //[cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
     
     return cell;
+}
+
+- (void)fetchEntryImageURLString:(NSString *)urlString {
+    GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:urlString];
+    [fetcher setComment:@"thumbnail"];
+    [fetcher beginFetchWithDelegate:self
+                  didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
+}
+
+
+- (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
+    if (error == nil) {
+        // got the data; display it in the image view
+        //NSImage *image = [[[NSImage alloc] initWithData:data] autorelease];
+        
+        // [mEntryImageView setImage:image];
+    } else {
+        NSLog(@"imageFetcher:%@ failedWithError:%@", fetcher,  error);
+    }
 }
 
 // Do some customisation of our new view when a table item has been selected

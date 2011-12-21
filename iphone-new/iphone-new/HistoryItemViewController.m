@@ -7,6 +7,8 @@
 //
 
 #import "HistoryItemViewController.h"
+#import "LoadingView.h"
+#import "YouTubeView.h"
 
 @implementation HistoryItemViewController
 
@@ -18,6 +20,35 @@
     //Change this to do logic for populating the search options: use exsisting pic, take pic, accel, location
     [outputLabel setText:selectedItem];
     [outputImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", selectedIndex]]];
+    
+    NSString *youTubeQueryURL = @"https://www.youtube.com/watch?v=P0OgzZpWNWY&feature=youtube_gdata name";
+    
+    LoadingView *loadingView = [LoadingView alloc];
+    [loadingView setParentView:self];
+    
+    [self.navigationController pushViewController:loadingView animated:NO];
+    
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+    activityIndicator.center = loadingView.view.center;
+    [loadingView.view addSubview: activityIndicator];
+    [activityIndicator startAnimating];
+
+    
+    NSLog(@"creating youtube view");
+    //display link to play video
+    YouTubeView *youTubeView = [[YouTubeView alloc] 
+                                initWithStringAsURL:youTubeQueryURL 
+                                frame:CGRectMake(0, 0, 240, 240)];
+    youTubeView.center = loadingView.view.center;
+    
+    [loadingView.view addSubview:youTubeView];
+    [activityIndicator stopAnimating];
+    
+    [loadingView.view addSubview:youTubeView];
+    
+    
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

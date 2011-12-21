@@ -39,7 +39,7 @@
 }
 
 - (NSString*) description{
-    return [[NSString alloc] initWithFormat:@"url: %@ name: %@ timestamp: %@ thumburl: %@ description: %@", url, name, timeStamp, thumbUrl, description];
+    return @"url: %@ name: %@ timestamp: %@ thumburl: %@ description: %@", url, name, timeStamp, thumbUrl, description;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -51,7 +51,7 @@
         timeStamp = [aDecoder decodeObjectForKey:@"timeStamp"];
         thumbUrl = [aDecoder decodeObjectForKey:@"thumbUrl"];
         description = [aDecoder decodeObjectForKey:@"description"];
-        
+        NSLog(@"url: %@ name: %@ timestamp: %@ thumburl: %@ description: %@", url, name, timeStamp, thumbUrl, description);
     }
     
     return self;
