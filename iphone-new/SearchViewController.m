@@ -75,6 +75,7 @@
 
 - (IBAction)useAccelerometer:(id)sender
 {
+    NSLog(@"accelerometer queried");
     //reset values from last accelerometer reading and request
     totalReadings = 0;
     totalX = 0;
@@ -132,6 +133,10 @@
     [CoreFunctions queryYoutubeWithLocation: lat andLongitude: lon];
 }
 
+- (IBAction)getNextVideo:(id)sender
+{
+    [CoreFunctions stumbleToNextVideo];
+}
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -182,31 +187,31 @@
     else
     {
         NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-        UIImage *originalImage, *editedImage, *imageToUse;
+        UIImage *originalImage, /*editedImage,*/ *imageToUse;
         
         // Handle a still image picked from a photo album,
         //__bridge handles casting
         if (CFStringCompare ((__bridge CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo) 
         {
-            editedImage = (UIImage *) [info objectForKey:
-                                       UIImagePickerControllerEditedImage];
-            originalImage = (UIImage *) [info objectForKey:
-                                         UIImagePickerControllerOriginalImage];
+           // editedImage = (UIImage *) [info objectForKey: UIImagePickerControllerEditedImage];
+           
+            originalImage = (UIImage *) [info objectForKey: UIImagePickerControllerOriginalImage];
             
-            if (editedImage) {
-                imageToUse = editedImage;
-            } else {
-                imageToUse = originalImage;
-            }
+         //   if (editedImage) {
+         //       imageToUse = editedImage;
+         //   } else {
+            imageToUse = originalImage;
+          //  }
          
-            
-            // Do something with imageToUse
-            //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
         
+            //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
+            ir = [[ImageRecognition alloc]initWithImageAndView:imageToUse :self];
+            //imageToUse = [ir sizedImageToSpecs:imageToUse];
+            [ir sendImageForRecognition:imageToUse];
         
         }
         
-        [[picker parentViewController] dismissModalViewControllerAnimated: YES];
+        [self dismissModalViewControllerAnimated: YES];
         //   [picker release];
     }
 }

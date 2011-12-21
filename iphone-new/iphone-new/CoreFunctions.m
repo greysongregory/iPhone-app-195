@@ -121,7 +121,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
     //save the index of the video we showed already (used in stumble to avoid repeated videos)
     index_obj = [[NSNumber alloc] initWithInt:index];
-    visitedIndices = [NSArray arrayWithObject:index_obj];
+    visitedIndices = [[NSMutableArray alloc] initWithObjects:index_obj, nil];
     
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
@@ -144,7 +144,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //display link to play video
     YouTubeView *youTubeView = [[YouTubeView alloc] 
                                 initWithStringAsURL:youTubeQueryURL 
-                                frame:CGRectMake(100, 170, 120, 120)];
+                                frame:CGRectMake(185, 243, 120, 120)];
     
     [[uiv view] addSubview:youTubeView];
     
@@ -159,19 +159,25 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 {
     if ( [visitedIndices count] >= youTubeMaxResults )
     {
-        //TODO: finish this mehtod
+        //TODO: finish this method
         //do something like make a warning pop up...
         //hit OK and then take to history page
     }
+    int index = nil;
     do
     {
-        int index = arc4random()%youTubeMaxResults; //this could give us out of bounds
+        index = arc4random()%youTubeMaxResults; //this could give us out of bounds
         index_obj = [[NSNumber alloc] initWithInt:index];
     }
     while ([visitedIndices containsObject:index_obj] == YES);
 
     [visitedIndices addObject:index_obj];
-     
+    
+    if (index == nil)
+    {
+        //error chek
+    }
+    
     GDataEntryBase* entry = [currentFeed entryAtIndex:index];
     GDataEntryYouTubeVideo *video = (GDataEntryYouTubeVideo *)entry;
     GDataMediaThumbnail *thumbnail = [[video mediaGroup] highQualityThumbnail];
@@ -185,7 +191,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     GDataLink* link = [entry HTMLLink];
     youTubeQueryURL = [link href];
     
-    NSLog(@"Choosing url: %@", link);
+    NSLog(@"Choosing url: %@", youTubeQueryURL);
     
     HistoryEntry *histEntry = [[HistoryEntry alloc] initWithUrl: youTubeQueryURL withName: [[entry title] stringValue] withTimeStamp: [CoreFunctions getCurrentTime] withThumbUrl: imageURLString withDescription: [[entry summary]stringValue]];
     [history addObject: histEntry];
@@ -193,7 +199,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //display link to play video
     YouTubeView *youTubeView = [[YouTubeView alloc] 
                                 initWithStringAsURL:youTubeQueryURL 
-                                frame:CGRectMake(100, 170, 120, 120)];
+                                frame:CGRectMake(185, 243, 120, 120)];
     
     [[uiv view] addSubview:youTubeView];
 }

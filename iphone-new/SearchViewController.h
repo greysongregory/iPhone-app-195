@@ -32,6 +32,7 @@
     IBOutlet UIButton *choosePhoto;
     IBOutlet UIButton *accelerometer;
     IBOutlet UIButton *location;
+    IBOutlet UIButton *nextVideo;
     
     CLLocationManager *locationManager;
     
@@ -42,6 +43,7 @@
 - (IBAction)choosePhoto:(id)sender;
 - (IBAction)useAccelerometer:(id)sender;
 - (IBAction)useLocation:(id)sender;
+- (IBAction)getNextVideo:(id)sender;
 
 - (void)configureAccelerometer;
 - (void)sleepAccelerometer;

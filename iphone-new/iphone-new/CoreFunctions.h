@@ -39,11 +39,13 @@ NSNumber *index_obj;
 finishedWithFeed:(GDataFeedYouTubeVideo *)feed
 error:(NSError *)error;
 
-+ (void)fetchEntryImageURLString:(NSString *)urlString;
++ (void) stumbleToNextVideo;
+
++ (void) fetchEntryImageURLString:(NSString *)urlString;
 
 + (void) setUIV:(UIViewController*) uivc;
 
-+ (void)imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error;
++ (void) imageFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error;
  
 + (NSString*) getCurrentTime;
 
