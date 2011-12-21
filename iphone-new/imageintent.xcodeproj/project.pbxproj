@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20072C3B14A15DB300F8A93C /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20072C3914A15DB300F8A93C /* LoadingView.m */; };
+		20072C3C14A15DB300F8A93C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20072C3A14A15DB300F8A93C /* LoadingView.xib */; };
 		202518E2148D93C800EC78CA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202518E1148D93C800EC78CA /* Security.framework */; };
 		202518E4148D93D000EC78CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202518E3148D93D000EC78CA /* SystemConfiguration.framework */; };
 		202518F9148D95AD00EC78CA /* duracell1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 202518F8148D95AD00EC78CA /* duracell1.jpg */; };
@@ -103,6 +105,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20072C3814A15DB300F8A93C /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		20072C3914A15DB300F8A93C /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		20072C3A14A15DB300F8A93C /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		202518E1148D93C800EC78CA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		202518E3148D93D000EC78CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		202518F8148D95AD00EC78CA /* duracell1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duracell1.jpg; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 			children = (
 				2025191C148D95FC00EC78CA /* SBJson */,
 				2025191D148D963800EC78CA /* CoreFunctions.h */,
+				20072C3814A15DB300F8A93C /* LoadingView.h */,
+				20072C3914A15DB300F8A93C /* LoadingView.m */,
+				20072C3A14A15DB300F8A93C /* LoadingView.xib */,
 				2025191E148D963800EC78CA /* CoreFunctions.m */,
 				209AE71114956A0F001A6531 /* History.h */,
 				209AE71214956A0F001A6531 /* History.m */,
@@ -297,8 +305,8 @@
 				20251921148D963800EC78CA /* IQResult.h */,
 				20251922148D963800EC78CA /* IQResult.m */,
 				202518F8148D95AD00EC78CA /* duracell1.jpg */,
-				389214D6148C7E620047CCA5 /* SearchViewController.h */,
 				389214D7148C7E620047CCA5 /* SearchViewController.m */,
+				389214D6148C7E620047CCA5 /* SearchViewController.h */,
 				389214F3148D8B750047CCA5 /* YouTubeView.h */,
 				389214F4148D8B760047CCA5 /* YouTubeView.m */,
 				3892146D148C05CB0047CCA5 /* AppDelegate.h */,
@@ -466,6 +474,7 @@
 				38921469148C05CB0047CCA5 /* InfoPlist.strings in Resources */,
 				38921472148C05CB0047CCA5 /* MainStoryboard.storyboard in Resources */,
 				202518F9148D95AD00EC78CA /* duracell1.jpg in Resources */,
+				20072C3C14A15DB300F8A93C /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +533,7 @@
 				2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */,
 				20D68B0D148DDB4D00FA94A2 /* HistoryEntry.m in Sources */,
 				209AE71314956A0F001A6531 /* History.m in Sources */,
+				20072C3B14A15DB300F8A93C /* LoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +594,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Greyson Gregory (UNP4FE3KMP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vince Mannino (LJ84XX4WW3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -611,7 +621,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Greyson Gregory (UNP4FE3KMP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vince Mannino (LJ84XX4WW3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

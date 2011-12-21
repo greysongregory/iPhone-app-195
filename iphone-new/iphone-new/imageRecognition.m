@@ -178,7 +178,7 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     pollInProgress = NO;
     searchString = result.labels;
     NSLog(searchString);
-    //[queryYoutube: searchString]
+
     [CoreFunctions setUIV:viewController];
     [CoreFunctions queryYoutube:searchString];
 }

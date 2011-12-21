@@ -27,6 +27,7 @@
 @synthesize theAccelerometer;
 @synthesize locationManager;
 @synthesize ir;
+@synthesize loadingView;
 
 
 
@@ -50,7 +51,6 @@
     
         // Show image picker
         [self presentModalViewController:imagePicker animated:YES];
-        NSLog(@"camera end");
     }
     else
         NSLog(@"Camera is not available");
@@ -176,8 +176,19 @@
         [ir sendImageForRecognition:image];
         
         
+        
         [self dismissModalViewControllerAnimated:YES];
+        loadingView = [LoadingView alloc];
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController pushViewController:loadingView animated:YES];
+
+
     
+        activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        activityIndicator.center = loadingView.view.center;
+        [loadingView.view addSubview: activityIndicator];
+        [activityIndicator startAnimating];
     
     }
     else

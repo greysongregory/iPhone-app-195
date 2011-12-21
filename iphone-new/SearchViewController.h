@@ -14,6 +14,7 @@
 #import "GData.h"
 #import "GDataFeedPhotoAlbum.h"
 #import "GDataFeedPhoto.h"
+#import "LoadingView.h"
 
 @class ImageRecognition;
 
@@ -36,6 +37,8 @@
     CLLocationManager *locationManager;
     
     NSMutableData *receivedData;
+    UIActivityIndicatorView *activityIndicator;
+    LoadingView *loadingView;
 }
 
 - (IBAction)takePhoto:(id)sender;
@@ -57,5 +60,7 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (nonatomic, retain) ImageRecognition *ir;
+
+@property (nonatomic, retain) LoadingView *loadingView;
 
 @end

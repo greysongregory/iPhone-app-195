@@ -26,6 +26,8 @@
         width=\"%0.0f\" height=\"%0.0f\"></embed>\
         </body></html>";
         
+        NSLog(@"");
+        
         // Populate HTML with the URL and requested frame size
         NSString *html = [NSString stringWithFormat:youTubeVideoHTML, urlString, frame.size.width, frame.size.height];
         
