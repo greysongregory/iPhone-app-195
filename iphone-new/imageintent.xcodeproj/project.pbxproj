@@ -294,10 +294,10 @@
 			children = (
 				2025191C148D95FC00EC78CA /* SBJson */,
 				2025191D148D963800EC78CA /* CoreFunctions.h */,
+				2025191E148D963800EC78CA /* CoreFunctions.m */,
 				20072C3814A15DB300F8A93C /* LoadingView.h */,
 				20072C3914A15DB300F8A93C /* LoadingView.m */,
 				20072C3A14A15DB300F8A93C /* LoadingView.xib */,
-				2025191E148D963800EC78CA /* CoreFunctions.m */,
 				209AE71114956A0F001A6531 /* History.h */,
 				209AE71214956A0F001A6531 /* History.m */,
 				2025191F148D963800EC78CA /* ImageRecognition.h */,

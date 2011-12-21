@@ -173,9 +173,9 @@
         // Write out the contents of home directory to console
         NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
     
-    
+        loadingView = [LoadingView alloc];
         //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
-        ir = [[ImageRecognition alloc]initWithImageAndView:image :self];
+        ir = [[ImageRecognition alloc]initWithImageAndView:image :loadingView];
         image = [ir sizedImageToSpecs:image];
         
         [ir sendImageForRecognition:image];
@@ -183,7 +183,7 @@
         
         
         [self dismissModalViewControllerAnimated:YES];
-        loadingView = [LoadingView alloc];
+        
         [self.navigationController popViewControllerAnimated:YES];
         [self.navigationController pushViewController:loadingView animated:YES];
 
@@ -217,7 +217,7 @@
          
         
             //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
-            ir = [[ImageRecognition alloc]initWithImageAndView:imageToUse :self];
+            ir = [[ImageRecognition alloc]initWithImageAndView:imageToUse :loadingView];
             //imageToUse = [ir sizedImageToSpecs:imageToUse];
             [ir sendImageForRecognition:imageToUse];
         
