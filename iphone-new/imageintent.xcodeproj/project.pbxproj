@@ -28,6 +28,8 @@
 		20251925148D963800EC78CA /* IQResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 20251922148D963800EC78CA /* IQResult.m */; };
 		2025193F148D980500EC78CA /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2025193E148D980500EC78CA /* NSObject+SBJson.m */; };
 		209AE71314956A0F001A6531 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 209AE71214956A0F001A6531 /* History.m */; };
+		20A8F37914A1AFBC00F59BE1 /* AccelerometerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8F37714A1AFBB00F59BE1 /* AccelerometerView.m */; };
+		20A8F37A14A1AFBC00F59BE1 /* AccelerometerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A8F37814A1AFBB00F59BE1 /* AccelerometerView.xib */; };
 		20D68B0D148DDB4D00FA94A2 /* HistoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D68B0C148DDB4C00FA94A2 /* HistoryEntry.m */; };
 		3892145F148C05CB0047CCA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3892145E148C05CB0047CCA5 /* UIKit.framework */; };
 		38921461148C05CB0047CCA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38921460148C05CB0047CCA5 /* Foundation.framework */; };
@@ -144,6 +146,9 @@
 		2025193E148D980500EC78CA /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		209AE71114956A0F001A6531 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		209AE71214956A0F001A6531 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		20A8F37614A1AFBA00F59BE1 /* AccelerometerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerView.h; sourceTree = "<group>"; };
+		20A8F37714A1AFBB00F59BE1 /* AccelerometerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerView.m; sourceTree = "<group>"; };
+		20A8F37814A1AFBB00F59BE1 /* AccelerometerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccelerometerView.xib; sourceTree = "<group>"; };
 		20D68B0B148DDB4C00FA94A2 /* HistoryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEntry.h; sourceTree = "<group>"; };
 		20D68B0C148DDB4C00FA94A2 /* HistoryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEntry.m; sourceTree = "<group>"; };
 		38503FA4148DB68C00B13076 /* GData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GData.xcodeproj; path = ../trunk/Source/GData.xcodeproj; sourceTree = "<group>"; };
@@ -295,6 +300,9 @@
 				2025191C148D95FC00EC78CA /* SBJson */,
 				2025191D148D963800EC78CA /* CoreFunctions.h */,
 				2025191E148D963800EC78CA /* CoreFunctions.m */,
+				20A8F37614A1AFBA00F59BE1 /* AccelerometerView.h */,
+				20A8F37714A1AFBB00F59BE1 /* AccelerometerView.m */,
+				20A8F37814A1AFBB00F59BE1 /* AccelerometerView.xib */,
 				20072C3814A15DB300F8A93C /* LoadingView.h */,
 				20072C3914A15DB300F8A93C /* LoadingView.m */,
 				20072C3A14A15DB300F8A93C /* LoadingView.xib */,
@@ -475,6 +483,7 @@
 				38921472148C05CB0047CCA5 /* MainStoryboard.storyboard in Resources */,
 				202518F9148D95AD00EC78CA /* duracell1.jpg in Resources */,
 				20072C3C14A15DB300F8A93C /* LoadingView.xib in Resources */,
+				20A8F37A14A1AFBC00F59BE1 /* AccelerometerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +543,7 @@
 				20D68B0D148DDB4D00FA94A2 /* HistoryEntry.m in Sources */,
 				209AE71314956A0F001A6531 /* History.m in Sources */,
 				20072C3B14A15DB300F8A93C /* LoadingView.m in Sources */,
+				20A8F37914A1AFBC00F59BE1 /* AccelerometerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

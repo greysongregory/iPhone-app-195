@@ -117,8 +117,11 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     NSLog([feed debugDescription]);
     currentFeed = feed;
     
+    NSLog(@"num entries: %d", [[feed entries] count]);
+    
+    int resultSize = ([[feed entries] count] < youTubeMaxResults)? [[feed entries] count] :  youTubeMaxResults;
     //parse result and grab a random youtube video here
-    int index = arc4random()%youTubeMaxResults; //this could give us out of bounds error if number of results is less than youTubeMaxResults
+    int index = arc4random()%resultSize;
     //save the index of the video we showed already (used in stumble to avoid repeated videos)
     index_obj = [[NSNumber alloc] initWithInt:index];
     visitedIndices = [[NSMutableArray alloc] initWithObjects:index_obj, nil];
@@ -139,34 +142,45 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     NSLog(@"Choosing url: %@", link);
     
     HistoryEntry *histEntry = [[HistoryEntry alloc] initWithUrl: youTubeQueryURL withName: [[entry title] stringValue] withTimeStamp: [CoreFunctions getCurrentTime] withThumbUrl: imageURLString withDescription: [[entry summary]stringValue]];
-    [history addObject: histEntry];
+    [History addEntry: histEntry];
     
+    UIView *loadingView = [[uiv loadingView] view];
+    
+    NSLog(@"creating youtube view");
     //display link to play video
     YouTubeView *youTubeView = [[YouTubeView alloc] 
                                 initWithStringAsURL:youTubeQueryURL 
-                                frame:CGRectMake(185, 243, 120, 120)];
+                                frame:CGRectMake(0, 0, 240, 240)];
+    youTubeView.center = loadingView.center;
     
-    [[uiv view] addSubview:youTubeView];
+    [loadingView addSubview:youTubeView];
+    [[uiv activityIndicator] stopAnimating];
     
- //   youTubeView = [[YouTubeView alloc] initWithStringAsURL:youTubeQueryURL];
-    
-    //display view
-    //UIView *thisView = (UIView*)[self.view viewWithTag:99];
- //   [[uiv view] addSubview:youTubeView];
+    [loadingView addSubview:youTubeView];
+    NSLog(@"finished");
 }
 
 + (void) stumbleToNextVideo
 {
+    
+    
+    if (currentFeed == nil){
+        return;
+    }
+    
+    
     if ( [visitedIndices count] >= youTubeMaxResults )
     {
         //TODO: finish this method
         //do something like make a warning pop up...
         //hit OK and then take to history page
     }
+    
     int index = nil;
+    int resultSize = ([[currentFeed entries] count] < youTubeMaxResults)? [[currentFeed entries] count] :  youTubeMaxResults;
     do
     {
-        index = arc4random()%youTubeMaxResults; //this could give us out of bounds
+        index = arc4random()%resultSize; //this could give us out of bounds
         index_obj = [[NSNumber alloc] initWithInt:index];
     }
     while ([visitedIndices containsObject:index_obj] == YES);
@@ -199,9 +213,15 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     //display link to play video
     YouTubeView *youTubeView = [[YouTubeView alloc] 
                                 initWithStringAsURL:youTubeQueryURL 
-                                frame:CGRectMake(185, 243, 120, 120)];
+                                frame:CGRectMake(10, 10, 240, 240)];
     
-    [[uiv view] addSubview:youTubeView];
+    youTubeView.center = uiv->loadingView.view.center;
+    [[uiv->loadingView view] addSubview:youTubeView];
+    [uiv->activityIndicator stopAnimating];
+    
+    [[uiv->loadingView view] addSubview:youTubeView];
+
+   
 }
 
 + (NSString*) getCurrentTime{
@@ -215,7 +235,7 @@ static NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     return dateString;
 }
 
-+ (void) setUIV:(UIViewController*) uivc
++ (void) setUIV:(SearchViewController*) uivc
 {
     uiv = uivc;
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
+#import "SearchViewController.h"
 
 NSMutableData *receivedData;
 SBJsonParser *parser;
@@ -17,7 +18,7 @@ BOOL pollInProgress;
 
 @interface ImageRecognition : NSObject{
     NSString *searchString;
-    UIViewController *viewController;
+    SearchViewController *viewController;
 }
 
 - (id) initWithImageAndView:(UIImage*) img: (UIViewController*) view;

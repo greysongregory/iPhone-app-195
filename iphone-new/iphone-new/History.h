@@ -14,15 +14,15 @@ NSMutableArray *history;
 
 @interface History : NSObject
 
-- (id) init;
++ (void) init;
 
-- (NSArray*) getEntries;
++ (NSArray*) getEntries;
 
-- (void) addEntry: (HistoryEntry*) entry;
++ (void) addEntry: (HistoryEntry*) entry;
 
-- (void) removeEntry: (HistoryEntry*) entry;
++ (void) removeEntry: (HistoryEntry*) entry;
 
-- (void) commit;
++ (void) commit;
 
 
 @end

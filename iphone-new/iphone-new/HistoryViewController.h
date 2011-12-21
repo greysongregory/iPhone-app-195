@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+NSArray *historyElements;
+
 @interface HistoryViewController : UITableViewController
-{
-    NSMutableArray *historyElements;
-}
+    
 
 @end

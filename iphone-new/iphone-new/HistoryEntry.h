@@ -27,4 +27,6 @@ NSString *description;
 - (id)initWithUrl: (NSString*) _url withName: (NSString*)_name withTimeStamp:(NSString*)_timeStamp withThumbUrl:(NSString*)_thumbUrl withDescription: (NSString*) _description;
 
 - (id)initWithCoder:(NSCoder *)aDecoder;
+
+- (NSString*) description;
 @end

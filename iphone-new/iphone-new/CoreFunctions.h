@@ -12,13 +12,16 @@
 #import "GData.h"
 #import "GDataFeedPhotoAlbum.h"
 #import "GDataFeedPhoto.h"
+#import "SearchViewController.h"
+#import "History.h"
+
+@class History;
 
 GDataServiceGoogleYouTube *service;
 GDataFeedYouTubeVideo *currentFeed;
 NSString *youTubeQueryURL;    
 YouTubeView *youTubeView;
-NSMutableArray *history;
-UIViewController *uiv;
+SearchViewController *uiv;
 
 NSMutableArray *visitedIndices;
 NSArray *currentFeedResults; //this may already be currentFeed, in which case we can just use that var

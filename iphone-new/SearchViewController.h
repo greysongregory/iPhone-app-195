@@ -15,19 +15,30 @@
 #import "GDataFeedPhotoAlbum.h"
 #import "GDataFeedPhoto.h"
 #import "LoadingView.h"
+#import "AccelerometerView.h"
 
 @class ImageRecognition;
+@class LoadingView;
+@class AccelerometerView;
 
 @interface SearchViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
     int takeOrChoose;
     
     int totalReadings;
-    int totalX;
-    int totalY;
-    int totalZ;
+    double totalX;
+    double totalY;
+    double totalZ;
     UIAccelerometer *theAccelerometer;
     
+    
+    AccelerometerView *accelView;
+    
     int bpm;
+    
+    
+    double lat; 
+    double lon;
+    
     
     IBOutlet UIButton *takePhoto;
     IBOutlet UIButton *choosePhoto;
@@ -38,18 +49,28 @@
     CLLocationManager *locationManager;
     
     NSMutableData *receivedData;
-    UIActivityIndicatorView *activityIndicator;
-    LoadingView *loadingView;
+    @public UIActivityIndicatorView *activityIndicator;
+    @public LoadingView *loadingView;
 }
 
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)choosePhoto:(id)sender;
 - (IBAction)useAccelerometer:(id)sender;
 - (IBAction)useLocation:(id)sender;
-- (IBAction)getNextVideo:(id)sender;
+- (void) getNextVideo;
 
-- (void)configureAccelerometer;
+- (void)setupAccelerometer;
 - (void)sleepAccelerometer;
+
+- (void) startRecordingAccel;
+- (void) stopRecordingAccel;
+
+
+- (IBAction)useAccelerometer;
+
+- (void) showProgressPage: (UIViewController*) controller;
+
+- (void) sendImage: (UIImage*) image;
 
 - (NSDictionary *)userInfo;
 
@@ -64,5 +85,7 @@
 @property (nonatomic, retain) ImageRecognition *ir;
 
 @property (nonatomic, retain) LoadingView *loadingView;
+
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 
 @end

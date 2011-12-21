@@ -36,9 +36,8 @@
 {
     [super viewDidLoad];
     //Here define the array with the history information
-    History *history = [[History alloc] init];
     
-    NSArray *historyElements = [history getEntries];
+    historyElements = [History getEntries];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -104,6 +103,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    NSLog(@"Populating cell %d", indexPath.row);
+    NSLog(@"%@", [[historyElements objectAtIndex:indexPath.row] description]);
     
     // Get the cell label using its tag and set it
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];

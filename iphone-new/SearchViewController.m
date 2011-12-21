@@ -21,6 +21,7 @@
 #define CLIENT_ID @""
 #define CLIENT_SECRET @""
 #define DEVKEY @""
+#define MAX_ACCEL 2.3
 
 @implementation SearchViewController
 
@@ -28,7 +29,12 @@
 @synthesize locationManager;
 @synthesize ir;
 @synthesize loadingView;
+@synthesize activityIndicator;
 
+
+
+
+/*************************Photo Functions*************************/
 
 
 - (IBAction)takePhoto:(id)sender
@@ -75,126 +81,48 @@
     }
 }
 
-- (IBAction)useAccelerometer:(id)sender
-{
-    NSLog(@"accelerometer queried");
-    //reset values from last accelerometer reading and request
-    totalReadings = 0;
-    totalX = 0;
-    totalY = 0;
-    totalZ = 0;
-    [self configureAccelerometer];
-    /*
-    [NSTimer scheduledTmerWithTimeInterval:2.0
-                                        target:self
-                                        selector:@selector(sleepAccelerometer)
-                                        userInfo:[self userInfo]
-                                        repeats:NO];
-     */
-    //need to wait for 2+ seconds here...
-    [NSThread sleepForTimeInterval:2.0];
-    [self sleepAccelerometer];
-    //each average should be between 0 and 2.3, based on the max value the accelerometer returns (i *think* it's 2.3)
-    if (totalReadings == 0)
-        totalReadings++;
-    totalX /= totalReadings;
-    totalY /= totalReadings;
-    totalZ /= totalReadings;
-    //added, we have a number between 0 and 6.9. bpm is in a range of ~60-200
-    bpm = ((totalX + totalY + totalZ)*20) + 60;
-    
-    //make request to bpm database, parse result, make youtube request.
-    //search bpm database with url request similar to:
-    //  http://bpmdatabase.com/search.php?begin=1&num=2&numBegin=1&artist=&title=&mix=&bpm=68&gid=&label=&year=&srt=artist&ord=asc
-    // set begin to random number % total results, and bpm to the bpm calculated above
-    NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
-    
-    //query youtube here with artistAndTitle as the search string
-    [CoreFunctions setUIV:self];
-    
-    [CoreFunctions queryYoutube:artistAndTitle];
-
-}
-
-- (IBAction)useLocation:(id)sender
-{
-    if (nil == locationManager)
-    {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;   
-    }
-    [locationManager startUpdatingLocation];
-    CLLocation *currentLocation = [locationManager location];
-    CLLocationCoordinate2D coordinate = [currentLocation coordinate];
-    double lat = coordinate.latitude;
-    double lon = coordinate.longitude;
-    [locationManager stopUpdatingLocation];
-
-    
-    //make youtube request with lat and long variables
-    [CoreFunctions queryYoutubeWithLocation: lat andLongitude: lon];
-}
-
-- (IBAction)getNextVideo:(id)sender
-{
-    [CoreFunctions stumbleToNextVideo];
-}
-
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog(@"DIDfinishpicking\n");
+    
+    UIImage *image;
+    
 	if(takeOrChoose)
     {
         NSError *error;
-    
+        
         // Access the uncropped image from info dictionary
-        UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-            // Create paths to output images
-        NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
-        NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
-    
-        // Write a UIImage to JPEG with minimum compression (best quality)
-        // The value 'image' must be a UIImage object
-        // The value '1.0' represents image compression quality as value from 0.0 to 1.0
-        [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
+        image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         
-        // Write image to PNG
-        [UIImagePNGRepresentation(image) writeToFile:pngPath atomically:YES];
-    
-        // Let's check to see if files were successfully written...
-        // You can try this when debugging on-device
-        
-        // Create file manager
-        NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-        // Point to Document directory
-        NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    
-        // Write out the contents of home directory to console
-        NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
-    
-        loadingView = [LoadingView alloc];
-        //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
-        ir = [[ImageRecognition alloc]initWithImageAndView:image :loadingView];
-        image = [ir sizedImageToSpecs:image];
-        
-        [ir sendImageForRecognition:image];
+        /*
+         // Create paths to output images
+         NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+         NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
+         
+         // Write a UIImage to JPEG with minimum compression (best quality)
+         // The value 'image' must be a UIImage object
+         // The value '1.0' represents image compression quality as value from 0.0 to 1.0
+         [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
+         
+         // Write image to PNG
+         [UIImagePNGRepresentation(image) writeToFile:pngPath atomically:YES];
+         
+         // Let's check to see if files were successfully written...
+         // You can try this when debugging on-device
+         
+         // Create file manager
+         NSFileManager *fileMgr = [NSFileManager defaultManager];
+         
+         // Point to Document directory
+         NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+         
+         // Write out the contents of home directory to console
+         NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
+         
+         */
         
         
         
-        [self dismissModalViewControllerAnimated:YES];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.navigationController pushViewController:loadingView animated:YES];
-
-
-    
-        activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-        activityIndicator.center = loadingView.view.center;
-        [loadingView.view addSubview: activityIndicator];
-        [activityIndicator startAnimating];
-    
     }
     else
     {
@@ -205,30 +133,103 @@
         //__bridge handles casting
         if (CFStringCompare ((__bridge CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo) 
         {
-           // editedImage = (UIImage *) [info objectForKey: UIImagePickerControllerEditedImage];
-           
-            originalImage = (UIImage *) [info objectForKey: UIImagePickerControllerOriginalImage];
+            // editedImage = (UIImage *) [info objectForKey: UIImagePickerControllerEditedImage];
             
-         //   if (editedImage) {
-         //       imageToUse = editedImage;
-         //   } else {
-            imageToUse = originalImage;
-          //  }
-         
-        
-            //DO IMAGE RECOGNITION AND YOUTUBE QUERY HERE
-            ir = [[ImageRecognition alloc]initWithImageAndView:imageToUse :loadingView];
-            //imageToUse = [ir sizedImageToSpecs:imageToUse];
-            [ir sendImageForRecognition:imageToUse];
-        
+            image = (UIImage *) [info objectForKey: UIImagePickerControllerOriginalImage];
+            
         }
-        
-        [self dismissModalViewControllerAnimated: YES];
-        //   [picker release];
     }
+    [self dismissModalViewControllerAnimated:YES];
+    [self showProgressPage: self];
+    [self sendImage: image];
+    
 }
 
--(void)configureAccelerometer
+
+- (void) showProgressPage: (UIViewController*) controller{
+    loadingView = [LoadingView alloc];
+    [loadingView setParentView:self];
+
+    [controller.navigationController pushViewController:loadingView animated:YES];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+    activityIndicator.center = loadingView.view.center;
+    [loadingView.view addSubview: activityIndicator];
+    [activityIndicator startAnimating];
+}
+
+- (void) sendImage: (UIImage*) image{
+    ir = [[ImageRecognition alloc]initWithImageAndView:NULL :self];
+    UIImage *sizedImage = [ir sizedImageToSpecs:image];
+    
+    [ir sendImageForRecognition:sizedImage];
+}
+
+/****************************Accelerometed Functions******************/
+
+- (IBAction)useAccelerometer {
+    if (accelView == nil){
+        accelView = [AccelerometerView alloc];
+        [accelView setParent:self];
+    }
+    
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController pushViewController:accelView animated:YES];
+    
+    [self setupAccelerometer];
+}
+
+
+
+- (void) startRecordingAccel
+{
+
+    //reset values from last accelerometer reading and request
+    totalReadings = 0;
+    totalX = 0;
+    totalY = 0;
+    totalZ = 0;
+}
+
+- (void) stopRecordingAccel{
+    //each average should be between 0 and 2.3, based on the max value the accelerometer returns (i *think* it's 2.3)
+    if (totalReadings == 0)
+        totalReadings++;
+    totalX /= totalReadings;
+    totalY /= totalReadings;
+    totalZ /= totalReadings;
+    
+    
+    
+    //added, we have a number between 0 and 6.9. bpm is in a range of ~60-200
+    bpm = ((totalX + totalY + totalZ)*20) + 60;
+    
+    NSLog(@"Accelerometer readings: %@, %@, %@",totalX, totalY, totalZ );
+    NSLog(@"bpm: %d", bpm);
+    
+    
+    [accelView.navigationController popViewControllerAnimated:NO];
+    [self showProgressPage: self];
+ 
+    
+    //make request to bpm database, parse result, make youtube request.
+    //search bpm database with url request similar to:
+    //  http://bpmdatabase.com/search.php?begin=1&num=2&numBegin=1&artist=&title=&mix=&bpm=68&gid=&label=&year=&srt=artist&ord=asc
+    
+    // set begin to random number % total results, and bpm to the bpm calculated above
+    NSString* artistAndTitle = [self parseBPMDatabaseResult:bpm];
+    
+    //query youtube here with artistAndTitle as the search string
+    
+    
+    [CoreFunctions queryYoutube:artistAndTitle];
+
+}
+
+
+
+-(void)setupAccelerometer
 {
     theAccelerometer = [UIAccelerometer sharedAccelerometer];
     theAccelerometer.updateInterval = 1 / kAccelerometerFrequency;
@@ -245,16 +246,106 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
     UIAccelerationValue x, y, z;
-    x = acceleration.x;
-    y = acceleration.y;
-    z = acceleration.z;
+    x = abs(acceleration.x);
+    y = abs(acceleration.y);
+    z = abs(acceleration.z);
     
-    // Do something with the values.
+    
+    
+    [accelView xProgress].progress = (x==0)? 0 : x/MAX_ACCEL;
+    [accelView yProgress].progress = (y==0)? 0 : y/MAX_ACCEL;
+    [accelView zProgress].progress = (z==0)? 0 : z/MAX_ACCEL;
+    
+    // update values
     totalReadings++;
-    totalX += abs(x);
-    totalY += abs(y);
-    totalZ += abs(z);
+    totalX += x;
+    totalY += y;
+    totalZ += z;
 }
+
+
+- (NSString*) parseBPMDatabaseResult:(int)beatspm
+{
+    //request format:  http://bpmdatabase.com/search.php?begin=1&num=2&numBegin=1&artist=&title=&mix=&bpm=68&gid=&label=&year=&srt=artist&ord=asc
+    NSString* firstRequest = [NSString stringWithFormat:@"http://bpmdatabase.com/search.php?begin=0&num=2&numBegin=1&artist=&title=&mix=&bpm=%d&gid=&label=&year=&srt=artist&ord=asc", beatspm];
+    //make http request, assign it to a variable then use this regex: of <b>88</b> result
+  
+    NSString* http = [self httpRequest:firstRequest]; //change null to request result
+  
+    
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"of <b>(\\d{1,3})</b> results"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSTextCheckingResult *res = [regex firstMatchInString:http options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [http length])];
+    NSString* resString = [http substringWithRange:[res rangeAtIndex:1]];
+    
+ 
+    
+    int numSongs = [resString intValue];
+    int songIndex = arc4random()%numSongs;
+    //make next http request, with index as begin get param
+    NSString* secondRequest = [NSString stringWithFormat:@"http://bpmdatabase.com/search.php?begin=%d&num=2&numBegin=1&artist=&title=&mix=&bpm=%d&gid=&label=&year=&srt=artist&ord=asc", songIndex, beatspm];
+    http = [self httpRequest:secondRequest];; //change to result of second request
+    NSRegularExpression *regexTwo = [NSRegularExpression regularExpressionWithPattern:@"<tr class=\"line\\d\"><td>(.+?)<\/td><td>(.+?)<\/td>"
+                                                                              options:NSRegularExpressionCaseInsensitive
+                                                                                error:&error];
+    NSArray *matches = [regexTwo matchesInString:http options:0 range:NSMakeRange(0, [http length])];
+    NSTextCheckingResult *matchOne = [matches objectAtIndex:0];
+    NSTextCheckingResult *matchTwo = [matches objectAtIndex:0];
+    
+    NSString* artist = [http substringWithRange:[matchOne rangeAtIndex:1]];
+    NSString* title = [http substringWithRange:[matchTwo rangeAtIndex:2]];
+    //create string to query youtube with using the first two elements of *matches
+    NSLog(artist);
+    NSLog(title);
+    
+    NSString* artistWithTitle =  [NSString stringWithFormat:@"%@ %@", artist, title]; //replace with *matches elements
+    return artistWithTitle;
+}
+
+
+/********************Location FUnctions**************************/
+
+- (IBAction)useLocation:(id)sender
+{
+    
+    [self showProgressPage: self];
+    
+    //make youtube request with lat and long variables
+    [CoreFunctions queryYoutubeWithLocation: lat andLongitude: lon];
+}
+
+- (void) sampleLocation
+{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    CLLocationCoordinate2D coordinate = [newLocation coordinate];
+    lat = coordinate.latitude;
+    lon = coordinate.longitude;
+    NSLog(@"Locations sample: %d %d", lat, lon);
+}
+
+
+
+- (void) getNextVideo
+{
+    [CoreFunctions stumbleToNextVideo];
+}
+
+
+
+
+
 
 
 
@@ -275,46 +366,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (NSString*) parseBPMDatabaseResult:(int)beatspm
-{
-    //request format:  http://bpmdatabase.com/search.php?begin=1&num=2&numBegin=1&artist=&title=&mix=&bpm=68&gid=&label=&year=&srt=artist&ord=asc
-    NSString* firstRequest = [NSString stringWithFormat:@"http://bpmdatabase.com/search.php?begin=0&num=2&numBegin=1&artist=&title=&mix=&bpm=%d&gid=&label=&year=&srt=artist&ord=asc", beatspm];
-    //make http request, assign it to a variable then use this regex: of <b>88</b> result
-    NSLog(firstRequest);
-    NSString* http = [self httpRequest:firstRequest]; //change null to request result
-    NSLog(http);
-    
-    NSError *error = NULL;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"of <b>(\\d{1,3})</b> results"
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
-    NSTextCheckingResult *res = [regex firstMatchInString:http options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [http length])];
-    NSString* resString = [http substringWithRange:[res rangeAtIndex:1]];
-    
-    //NSLog(res);
-    NSLog(resString);
-    
-    int numSongs = [resString intValue];
-    int songIndex = arc4random()%numSongs;
-    //make next http request, with index as begin get param
-    NSString* secondRequest = [NSString stringWithFormat:@"http://bpmdatabase.com/search.php?begin=%d&num=2&numBegin=1&artist=&title=&mix=&bpm=%d&gid=&label=&year=&srt=artist&ord=asc", songIndex, beatspm];
-    http = [self httpRequest:secondRequest];; //change to result of second request
-    NSRegularExpression *regexTwo = [NSRegularExpression regularExpressionWithPattern:@"<tr class=\"line\\d\"><td>(.+?)<\/td><td>(.+?)<\/td>"
-                                                                            options:NSRegularExpressionCaseInsensitive
-                                                                            error:&error];
-    NSArray *matches = [regexTwo matchesInString:http options:0 range:NSMakeRange(0, [http length])];
-    NSTextCheckingResult *matchOne = [matches objectAtIndex:0];
-    NSTextCheckingResult *matchTwo = [matches objectAtIndex:0];
-    
-    NSString* artist = [http substringWithRange:[matchOne rangeAtIndex:1]];
-    NSString* title = [http substringWithRange:[matchTwo rangeAtIndex:2]];
-    //create string to query youtube with using the first two elements of *matches
-    NSLog(artist);
-    NSLog(title);
-    
-    NSString* artistWithTitle =  [NSString stringWithFormat:@"%@ %@", artist, title]; //replace with *matches elements
-    return artistWithTitle;
-}
 
 //Timer Methods
 - (NSDictionary *)userInfo {
@@ -347,6 +398,8 @@
 {
     [super viewDidLoad];
     [CoreFunctions setupYoutubeService];
+    [CoreFunctions setUIV:self];
+    [self sampleLocation];
 }
 
 
@@ -376,7 +429,6 @@
    // NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef) encodingName));
     
     NSString* test = [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding];
-    NSLog(test);
     return test;
 }
 

@@ -12,24 +12,39 @@
 @implementation History
 
 
-- (id) init{
-    history = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/history.archive"];
++ (void) init{
+    NSString *localPath = @"Documents/history.archive";
+    NSString *fullPath = [NSHomeDirectory() stringByAppendingPathComponent:localPath];
+    history = [NSKeyedUnarchiver unarchiveObjectWithFile:fullPath];
+    NSLog(@"History loaded %@", history);
+    if (history == nil){
+        NSLog(@"creating new history");
+        history = [[NSMutableArray alloc] init];
+    }
 }
 
-- (NSArray*) getEntries{
++ (NSArray*) getEntries{
+    [self init];
     return [[NSArray alloc] initWithArray: history];
 }
 
-- (void) addEntry: (HistoryEntry*) entry{
++ (void) addEntry: (HistoryEntry*) entry{
+    [self init];
     [history addObject: entry];
+    [self commit];
+    NSLog(@"History updated: %@", history);
 }
 
-- (void) removeEntry: (HistoryEntry*) entry{
++ (void) removeEntry: (HistoryEntry*) entry{
+    [self init];
     [history removeObject: entry];
+    [self commit];
 }
 
-- (void) commit{
-    [NSKeyedArchiver archiveRootObject:history toFile:@"/history.archive"];
++ (void) commit{
+    NSString *localPath = @"Documents/history.archive";
+    NSString *fullPath = [NSHomeDirectory() stringByAppendingPathComponent:localPath];
+    [NSKeyedArchiver archiveRootObject:history toFile:fullPath];
 }
 
 @end

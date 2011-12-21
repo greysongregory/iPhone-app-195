@@ -1,14 +1,17 @@
 //
-//  LoadingView.m
+//  AccelerometerView.m
 //  imageintent
 //
 //  Created by Vin on 12/20/11.
 //  Copyright (c) 2011 University of Pennsylvania. All rights reserved.
 //
 
-#import "LoadingView.h"
+#import "AccelerometerView.h"
 
-@implementation LoadingView
+@implementation AccelerometerView
+@synthesize xProgress;
+@synthesize yProgress;
+@synthesize zProgress;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -17,14 +20,6 @@
         // Custom initialization
     }
     return self;
-}
-- (IBAction)getNextVideo {
-    [controller getNextVideo];
-}
-
-- (void) setParentView: (SearchViewController*) searchViewController{
-    controller = searchViewController;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +40,9 @@
 
 - (void)viewDidUnload
 {
+    [self setXProgress:nil];
+    [self setYProgress:nil];
+    [self setZProgress:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,4 +54,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)touchDown {
+    [controller startRecordingAccel];
+}
+
+- (IBAction)touchUp {
+    [controller stopRecordingAccel];
+}
+
+- (void) setParent: (SearchViewController*) searchViewcontroller{
+    controller = searchViewcontroller;
+}
 @end

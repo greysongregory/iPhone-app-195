@@ -38,6 +38,10 @@
     
 }
 
+- (NSString*) description{
+    return [[NSString alloc] initWithFormat:@"url: %@ name: %@ timestamp: %@ thumburl: %@ description: %@", url, name, timeStamp, thumbUrl, description];
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     
     if (self = [super init]) {

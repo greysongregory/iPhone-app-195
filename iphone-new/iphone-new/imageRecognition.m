@@ -29,20 +29,17 @@ const NSString *boundary = @"---------------------------147378098314664998827466
     updatePollDelayInSeconds = 1;
     pollInProgress = NO;
     receivedData = [NSMutableData data];
-    //NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
-    //[self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
+
 	return self;
 }
 
-- (id) initWithImageAndView:(UIImage*) img: (UIViewController*) view{
+- (id) initWithImageAndView:(UIImage*) img: (SearchViewController*) view{
     self = [super init];
     parser = [[SBJsonParser alloc] init];
     updatePollDelayInSeconds = 1;
     pollInProgress = NO;
     receivedData = [NSMutableData data];
     viewController = view;
-    //NSString *img = [NSString stringWithFormat: @"%@/iphone-new.app/duracell1.jpg", NSHomeDirectory()];
-    //[self sendImageForRecognition: [[UIImage alloc] initWithContentsOfFile:img]];
 	return self;
 }
 
@@ -84,8 +81,9 @@ const NSString *boundary = @"---------------------------147378098314664998827466
 - (void) sendImageForRecognition: (UIImage*) image{
     
     
-    //Setup post params
+    NSLog(@"Sending image for recognition: %@", [image debugDescription]);
     
+    //Setup post params
     NSString * timeStamp = [self getCurrentTime];
  //   NSString * filename = "";
     NSString * api_key = IMAGE_REC_API_KEY;
