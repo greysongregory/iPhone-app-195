@@ -1,0 +1,40 @@
+Section 1 - Introduction
+
+Section 2 - High Level Description
+-3 party APIs
+-how we connected them
+-problems we encountered
+
+Image Intent uses two third party APIs, as well as one third party database to employ its functionality. The first and most obvious API used in the YouTube API. This was used to take queries that were created through various means (image recognition, acclerometer reading, or location reading) and return a video to display, along with all its related information. The second API we used was the IQ Engines' image recognition API. When a user takes or selects a photo to use, the image is sent to this API and terms that describe the object in the picture are returned and subsequently used to query the YouTube API. The third party database we used was bpmdatabase.com. The way this was used was a simple search and html parse to find relevant videos.
+
+The website was relatively easy to query and parse, but the two APIs were a bit trickier to get completely working. VIN ADD YOUR SHIT
+
+Section 3 - Low Level Description
+-what each file is/does
+-problems we encountered
+
+SearchViewController:
+The five button methods which correspond to the 5 buttons on the first tab view are: takePhoto, choosePhoto, useAccelerometer, useLocation, and getNextVideo. The takePhoto function brings up a camera view for the user to take a photo. After the photo is taken, the user sees a loading screen until the appropriate youTube video is found. Once found, the user is shown a thumbnail which when pressed opens up a youTube viewer and shows the video. The choosePhoto function has similar functionality, except it allows the user to choose a photo from thier library. The useAccelerometer button allows the user to move the devices at certain speeds and depending on that, a video with a song is displayed with a relatively similar "speed", based on the song's beats per minute attibute. The useLocation fucntion shows a youTube video that was uploaded in a geographic location nearby. Finally, getNextVideo will display the next video in the list of videos retrieved by a query from the previous methods. The videos are retrieved in a random order.
+
+The didFinishPickingMediaWithInfo method is called once the user either takes a photo or chooses an existing photo. This method sets up the necessary query for the image recognition, then youTube query.
+
+The configureAccelerometer and sleepAccelerometer are both helper methods that are used when the accelerometer is being used for searching.
+
+The parseBPMDatabaseResult method uses a database of songs with thier bpm attributes listed to find an appropriate song based on the accelerometer readings. This method parses the html of the database.
+
+The connection methods at the bottom of the file are used when establishing connections to the web, particularly during the accelerometer search.
+
+
+YouTubeView:
+This file is a simple class that defines how a thumbnail for a YouTube video should be shown. 
+
+
+HistoryViewController:
+This file is associated with the second tab within the application that shows the history of youtube videos that we queried. 
+
+The tableview method populates the table view that is shown on this tab. It is populated with entries that are created each time a video is shown. This allows the user to look back at past videos that have been seen.
+
+HistoryItemViewController:
+This file defines how each of the entries in the table found in the HistoryView will look when pressed. It will make sure that the correct video related to the pressed entry is shown.
+
+Section 4 - Conclusion
