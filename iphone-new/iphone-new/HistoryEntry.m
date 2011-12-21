@@ -21,12 +21,12 @@
     
     if (self = [super init]) {
  
-      url = [[NSString alloc] initWithString: _url];
-        name = [[NSString alloc] initWithString: _name];
-        timeStamp = [[NSString alloc] initWithString: _timeStamp];
-        thumbUrl = [[NSString alloc] initWithString: _thumbUrl];
+        url =  _url;
+        name = _name;
+        timeStamp = _timeStamp;
+        thumbUrl = _thumbUrl;
         if (_description) {
-            description = [[NSString alloc] initWithString: _description];
+            description = _description;
         }
         else{
             description = @"N/A";

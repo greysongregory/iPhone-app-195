@@ -105,7 +105,7 @@
     }
     
     NSLog(@"Populating cell %d", indexPath.row);
-    NSLog(@"%@", [[historyElements objectAtIndex:indexPath.row] description]);
+   // NSLog(@"%@", [[historyElements objectAtIndex:indexPath.row] description]);
     
     // Get the cell label using its tag and set it
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];

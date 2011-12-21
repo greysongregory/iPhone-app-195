@@ -1,17 +1,23 @@
 Section 1 - Introduction
+-Why
+-image
+-accel
+-bpm
+
+
 
 Section 2 - High Level Description
--3 party APIs
--how we connected them
--problems we encountered
 
-Image Intent uses two third party APIs, as well as one third party database to employ its functionality. The first and most obvious API used in the YouTube API. This was used to take queries that were created through various means (image recognition, acclerometer reading, or location reading) and return a video to display, along with all its related information. The second API we used was the IQ Engines' image recognition API. When a user takes or selects a photo to use, the image is sent to this API and terms that describe the object in the picture are returned and subsequently used to query the YouTube API. The third party database we used was bpmdatabase.com. The way this was used was a simple search and html parse to find relevant videos.
+Image Intent uses two third party APIs, as well as one third party database to employ its functionality. The first and most obvious API used in the YouTube API. This was used to take queries that were created through various means (image recognition, acclerometer reading, or location reading) and return a video to display, along with all its related information. The second API we used was the IQEngines' image recognition API. When a user takes or selects a photo to use, the image is sent to this API. Terms that describe the object in the picture are returned and subsequently used to query the YouTube API. The third party database we used was bpmdatabase.com. This was used as a simple search and html parse to find music with certain beat per minute characteristics.
 
-The website was relatively easy to query and parse, but the two APIs were a bit trickier to get completely working. VIN ADD YOUR SHIT
+The website was relatively easy to query and parse, but the two APIs were a bit trickier to get completely working. 
+IQEngines involved a lot of messing around with custom HTTP Post requests. Apple offers no high level APIs for this and all third party APIs were outdated and would not run on IOS 5 (ARM support was probably worth the hassle). Therefore, all HTTP logic was built up from NSURLConnection objects, meaning manually setting up HTTP bodies, mime types, img serialization, etc. Furthermore, IQEngines supports a very annoying authentication protocol which meant messing around with lots of hashing, hex, and the like.
+The Youtube API was a lot more fun to play with (thanks Google). We chose to utilize the GData API written in objective C, which saved us lots of HTTP hassle, but definitely made things more complicated than they needed to be.
+
+Once the individual parts were setup, we built the pipeline. For images, we set up the camera, took the photo, sent it to IQEngines, directed the user to a loading screen, sent the IQEngines keyword result to YouTube, and played the video. For Location, we sampled location (only sampling on change for efficiency), converted it to a proper format, directed to loading screen, and queried YouTube. For Accelerometer, we built the Accelerometer test page (with real time readings), sampled average accelerations, converted that to a relative BPM, queried the database, parsed the results, and finally queried YouTube.
+
 
 Section 3 - Low Level Description
--what each file is/does
--problems we encountered
 
 SearchViewController:
 The five button methods which correspond to the 5 buttons on the first tab view are: takePhoto, choosePhoto, useAccelerometer, useLocation, and getNextVideo. The takePhoto function brings up a camera view for the user to take a photo. After the photo is taken, the user sees a loading screen until the appropriate youTube video is found. Once found, the user is shown a thumbnail which when pressed opens up a youTube viewer and shows the video. The choosePhoto function has similar functionality, except it allows the user to choose a photo from thier library. The useAccelerometer button allows the user to move the devices at certain speeds and depending on that, a video with a song is displayed with a relatively similar "speed", based on the song's beats per minute attibute. The useLocation fucntion shows a youTube video that was uploaded in a geographic location nearby. Finally, getNextVideo will display the next video in the list of videos retrieved by a query from the previous methods. The videos are retrieved in a random order.
@@ -40,25 +46,27 @@ This file defines how each of the entries in the table found in the HistoryView 
 
 
 CoreFunctions:
-blah
+This was our first custom class, and hence why it has this epic name. This class contains all functions related to YouTube (which we deem as the core of our app). There are two query methods, one for keyword strings and location coordinates. Once a query is sent, we await a callback which will process the youtube results. This method picks a random video out of the first page (sorted by relevance and other Google magic), saves the rest for later, and creates the YoutubeView. The last important method stumbles across results, basically returning the next random video in the same set of results. 
 
 
 History:
-blah
+The History class is a convenience class for loading and saving history entries (information about the videos watched) to disk.
 
 
 HistoyEntry:
-blah
+The HistoryEntry is just a simple object to abstract away details of a video history entry, like name, url, thumbnail, etc.
 
 
 ImageRecognition:
-blah
+This class has all functions related to the IQEngines API. The notable method here is the sendImageForRecognition. It takes an image object, resizes it spec (with the corresponding method in this class), sets up the post request and authentication stuff, and sends the image off. Once the corresponding response is received (this is just an ACK that it was received), we initiate a timed poll request which keeps checking with the site until the image information is ready. Once it is ready, we process the results in the corresponding (aptly named) method. The other methods in this class are merely for setting up the request, such as getting curet time, hashing strings, and setting up http requests.
+
+
 
 IQResult:
-blah
+This class is merely a convenience object for results returned by IQEngines.
 
 SettingsViewController:
-blah
+This View Controller displays and keeps track of all app settings. 
 
 
 
