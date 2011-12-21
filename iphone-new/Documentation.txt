@@ -34,7 +34,32 @@ This file is associated with the second tab within the application that shows th
 
 The tableview method populates the table view that is shown on this tab. It is populated with entries that are created each time a video is shown. This allows the user to look back at past videos that have been seen.
 
+
 HistoryItemViewController:
 This file defines how each of the entries in the table found in the HistoryView will look when pressed. It will make sure that the correct video related to the pressed entry is shown.
+
+
+CoreFunctions:
+blah
+
+
+History:
+blah
+
+
+HistoyEntry:
+blah
+
+
+ImageRecognition:
+blah
+
+IQResult:
+blah
+
+SettingsViewController:
+blah
+
+
 
 Section 4 - Conclusion
